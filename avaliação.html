@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário Completo de Anamnese</title>
+  <link rel="stylesheet" href="assets/styles/avaliação.css">
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Projeto Terapêutico Singular</h1>
+    </header>
+    
+    <nav>
+      <a href="index.html">Triagem</a>
+      <a href="avaliação.html" class="active">Avaliação</a>
+      <a href="internação.html">Internação</a>
+    </nav>
+    
+    <h1 class="form-title">Anamnese</h1>
+    
+    <div class="form-container">
+      <form id="formulario">
+        <!-- Pergunta 1 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">1. Paciente é dependente?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="dependente" value="sim" onclick="toggleSubquestion('dependencia-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="dependente" value="nao" onclick="toggleSubquestion('dependencia-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="dependencia-details" class="subquestion" style="display: none;">
+            <label>Grau de dependência:</label>
+            <input type="text" name="grau_dependencia">
+          </div>
+        </div>
+        
+        <!-- Pergunta 2 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">2. Paciente está acamado?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="acamado" value="sim" onclick="toggleSubquestion('acamado-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="acamado" value="nao" onclick="toggleSubquestion('acamado-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="acamado-details" class="subquestion" style="display: none;">
+            <label>Quanto tempo?</label>
+            <input type="text" name="tempo_acamado">
+          </div>
+        </div>
+        
+        <!-- Pergunta 3 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">3. Possui deambulação prévia?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="deambulacao" value="sim" onclick="toggleSubquestion('deambulacao-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="deambulacao" value="nao" onclick="toggleSubquestion('deambulacao-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="deambulacao-details" class="subquestion" style="display: none;">
+            <label>Tipo de deambulação:</label>
+            <div class="option-group">
+              <label class="option-label">
+                <input type="radio" name="tipo_deambulacao" value="sem_auxilio"> Sem auxílio
+              </label>
+              <label class="option-label">
+                <input type="radio" name="tipo_deambulacao" value="com_auxilio"> Com auxílio
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 4 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">4. Necessita de SAD?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="sad" value="sim" onclick="toggleSubquestion('sad-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="sad" value="nao" onclick="toggleSubquestion('sad-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="sad-details" class="subquestion" style="display: none;">
+            <label>Status do SAD:</label>
+            <div class="option-group">
+              <label class="option-label">
+                <input type="checkbox" name="sad_solicitado"> Já solicitado
+              </label>
+              <label class="option-label">
+                <input type="checkbox" name="sad_resolvido"> Já resolvido
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 5 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">5. Necessita de Interconsulta?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="interconsulta" value="sim" onclick="toggleSubquestion('interconsulta-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="interconsulta" value="nao" onclick="toggleSubquestion('interconsulta-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="interconsulta-details" class="subquestion" style="display: none;">
+            <label>Especialidade:</label>
+            <input type="text" name="especialidade_interconsulta">
+            
+            <div style="margin-top: 15px;">
+              <label class="option-label">
+                <input type="checkbox" name="interconsulta_solicitado"> Já foi solicitado?
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 6 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">6. Necessita Encaminhamento?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="encaminhamento" value="sim" onclick="toggleSubquestion('encaminhamento-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="encaminhamento" value="nao" onclick="toggleSubquestion('encaminhamento-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="encaminhamento-details" class="subquestion" style="display: none;">
+            <label>Especialidade:</label>
+            <select name="especialidade_encaminhamento">
+              <option value="">Selecione</option>
+              <option>Cardiologia</option>
+              <option>Neurologia</option>
+              <option>Ortopedia</option>
+              <option>Cirurgia geral</option>
+              <option>Endócrino</option>
+              <option>Gastro</option>
+              <option>Nefro</option>
+              <option>Urologia</option>
+            </select>
+            
+            <div style="margin-top: 15px;">
+              <label class="option-label">
+                <input type="checkbox" name="documentacao_encaminhamento"> Documentação já realizada?
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 7 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">7. AVP?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="avp" value="sim" onclick="toggleSubquestion('avp-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="avp" value="nao" onclick="toggleSubquestion('avp-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="avp-details" class="subquestion" style="display: none;">
+            <label>Dificuldade:</label>
+            <select name="dificuldade_avp" onchange="togglePICC(this)">
+              <option value="">Selecione</option>
+              <option value="facil">Fácil</option>
+              <option value="medio">Médio</option>
+              <option value="dificil">Difícil</option>
+            </select>
+            
+            <div id="picc-details" class="subquestion" style="display: none; margin-top: 15px;">
+              <label>Solicitado PICC?</label>
+              <div class="option-group">
+                <label class="option-label">
+                  <input type="radio" name="picc" value="sim"> Sim
+                </label>
+                <label class="option-label">
+                  <input type="radio" name="picc" value="nao"> Não
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 8 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">8. Lesão por Pressão?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="lesao" value="sim" onclick="toggleSubquestion('lesao-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="lesao" value="nao" onclick="toggleSubquestion('lesao-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="lesao-details" class="subquestion" style="display: none;">
+            <label>Local:</label>
+            <input type="text" name="local_lesao">
+            
+            <label style="margin-top: 10px;">Grau:</label>
+            <input type="text" name="grau_lesao">
+          </div>
+        </div>
+        
+        <!-- Pergunta 9 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">9. Suporte Familiar?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="suporte_familiar" value="sim" onclick="toggleSubquestion('suporte-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="suporte_familiar" value="nao" onclick="toggleSubquestion('suporte-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="suporte-details" class="subquestion" style="display: none;">
+            <label>Quem?</label>
+            <input type="text" name="quem_suporte">
+            
+            <label style="margin-top: 10px;">Quantas pessoas?</label>
+            <input type="number" name="quantidade_suporte" min="0">
+          </div>
+        </div>
+        
+        <!-- Pergunta 10 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">10. Possui residência?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="residencia" value="sim" onclick="toggleSubquestion('residencia-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="residencia" value="nao" onclick="toggleSubquestion('residencia-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="residencia-details" class="subquestion" style="display: none;">
+            <label>Tipo:</label>
+            <select name="tipo_residencia">
+              <option>Casa própria</option>
+              <option>Ambiente familiar</option>
+              <option>Casa de repouso</option>
+              <option>Ambiente comunitário</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Pergunta 11 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">11. Recebe benefício do governo?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="beneficio" value="sim" onclick="toggleSubquestion('beneficio-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="beneficio" value="nao" onclick="toggleSubquestion('beneficio-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="beneficio-details" class="subquestion" style="display: none;">
+            <label>Qual?</label>
+            <input type="text" name="qual_beneficio">
+          </div>
+        </div>
+        
+        <!-- Pergunta 12 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">12. Possui vínculo com a rede de saúde?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <select name="vinculo_saude">
+                  <option>UBS</option>
+                  <option>CAPS</option>
+                  <option>CRAS</option>
+                  <option>SAD</option>
+                  <option>Outros</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 13 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">13. Cuidados respiratórios avançados?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="respiratorio" value="sim" onclick="toggleSubquestion('respiratorio-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="respiratorio" value="nao" onclick="toggleSubquestion('respiratorio-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="respiratorio-details" class="subquestion" style="display: none;">
+            <div class="option-group">
+              <label class="option-label">
+                <input type="checkbox" name="respiratorio_solicitado"> Já solicitado
+              </label>
+              <label class="option-label">
+                <input type="checkbox" name="respiratorio_em_maos"> Está em mãos?
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pergunta 14 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">14. Suporte nutricional adequado?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="nutricional" value="sim"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="nutricional" value="nao"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div style="margin-top: 15px; margin-left: 40%;">
+            <label class="option-label">
+              <input type="checkbox" name="nutricional_avaliado"> Avaliado?
+            </label>
+          </div>
+        </div>
+        
+        <!-- Pergunta 15 -->
+        <div class="question-group">
+          <div class="main-question">
+            <div class="question-text">15. Acompanhamento psicológico prévio?</div>
+            <div class="answer-options">
+              <label class="option-label">
+                <input type="radio" name="psicologico" value="sim" onclick="toggleSubquestion('psicologico-details', true)"> Sim
+              </label>
+              <label class="option-label">
+                <input type="radio" name="psicologico" value="nao" onclick="toggleSubquestion('psicologico-details', false)"> Não
+              </label>
+            </div>
+          </div>
+          
+          <div id="psicologico-details" class="subquestion" style="display: none;">
+            <label>Tempo de acompanhamento:</label>
+            <input type="text" name="tempo_psicologico">
+          </div>
+        </div>
+        
+        <div class="submit-container">
+          <button type="submit">Salvar Avaliação</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script src="script/script2.js"></script>
+</body>
+</html>

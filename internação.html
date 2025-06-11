@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Internação Domiciliar</title>
+  <link rel="stylesheet" href="assets/styles/internação.css">
+</head>
+<body>
+
+
+  <header>
+    <img src="assets/img/logob.png" alt="Logo do Projeto" />
+    <h1>Check-List Diário  </h1>
+  </header>
+
+  <hr />
+  <nav>
+    <a href="index.html">Triagem</a>
+    <a href="avaliação.html">Avaliação</a>
+    <a href="internação.html">Internação</a>
+  </nav>
+
+  <section>
+    <form id="formInternacao">
+
+
+
+      <h2>Controle diário para ALTA SEGURA</h2>
+
+      <p><strong>OBS:</strong> Se preenchido todos os critérios, poderá dar sequência a este protocolo.</p>
+
+      <div class="form-row">
+        <label>Temperatura &lt; 37,8°</label>
+        <input type="checkbox" name="criterioTemperatura">
+      </div>
+
+      <div class="form-row">
+        <label>Frequência Cardíaca &lt; 100 bpm</label>
+        <input type="checkbox" name="criterioCardiaca">
+      </div>
+
+      <div class="form-row">
+        <label>Frequência Respiratória &lt; 24 ir/min</label>
+        <input type="checkbox" name="criterioRespiratoria">
+      </div>
+
+      <div class="form-row">
+        <label>Pressão Arterial Sistólica &gt; 90 mmHg</label>
+        <input type="checkbox" name="criterioPressao">
+      </div>
+
+      <div class="form-row">
+        <label>Saturação de O₂ &gt; 90% em AA</label>
+        <input type="checkbox" name="criterioSaturacao">
+      </div>
+
+
+      <div class="form-row">
+        <label>Nível de Consciência Basal / Alerta</label>
+        <input type="checkbox" name="criterioConsciencia">
+      </div>
+
+     
+
+      <div class="form-row" id="avaliacao">
+        <label>CURB 65 </label>
+        <input type="radio" name="avaliacao" value="0"> 0
+        <input type="radio" name="avaliacao" value="1"> 1
+        <input type="radio" name="avaliacao" value="2"> 2
+        <input type="radio" name="avaliacao" value="3"> 3
+        <input type="radio" name="avaliacao" value="4"> 4
+        <input type="radio" name="avaliacao" value="5"> 5
+      </div>
+
+       <div class="form-row">
+        <label>ATB/Dia</label>
+        <input type="text " name="data" id="data" placeholder="Escreva o ATB e quantos dias">
+      </div>
+      <div class="form-row">
+        <label>ATB/Dia</label>
+        <input type="text " name="data" id="data" placeholder="Escreva o ATB e quantos dias">
+      </div>
+
+      <button type="submit">Salvar</button>
+
+    </form>
+  </section>
+
+</body>
+</html>
