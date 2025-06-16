@@ -26,50 +26,67 @@
     
     <div class="form-container">
       <form id="formulario">
-        <!-- Pergunta 1 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">1. Paciente é dependente?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="dependente" value="sim" onclick="toggleSubquestion('dependencia-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="dependente" value="nao" onclick="toggleSubquestion('dependencia-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="dependencia-details" class="subquestion" style="display: none;">
-            <label>Grau de dependência:</label>
-            <input type="text" name="grau_dependencia">
-          </div>
-        </div>
+        <!-- Pergunta 1 Modificada -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">1. Paciente é dependente?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="dependente" value="sim" onclick="toggleSubquestion('dependencia-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="dependente" value="nao" onclick="toggleSubquestion('dependencia-details', false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <div id="dependencia-details" class="subquestion" style="display: none;">
+    <label>Grau de dependência:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="grau_dependencia" value="parcial"> Dependente Parcial
+      </label>
+      <label class="option-label">
+        <input type="radio" name="grau_dependencia" value="total"> Dependente Total
+      </label>
+    </div>
+  </div>
+</div>
         
-        <!-- Pergunta 2 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">2. Paciente está acamado?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="acamado" value="sim" onclick="toggleSubquestion('acamado-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="acamado" value="nao" onclick="toggleSubquestion('acamado-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="acamado-details" class="subquestion" style="display: none;">
-            <label>Quanto tempo?</label>
-            <input type="text" name="tempo_acamado">
-          </div>
-        </div>
+   <!-- Pergunta 2 Modificada -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">2. Paciente está acamado?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="acamado" value="sim" onclick="toggleSubquestion('acamado-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="acamado" value="nao" onclick="toggleSubquestion('acamado-details', false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <div id="acamado-details" class="subquestion" style="display: none;">
+    <label>Tempo acamado:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="tempo_acamado" value="menos_1mes"> 1 á 3 meses
+      </label>
+      <label class="option-label">
+        <input type="radio" name="tempo_acamado" value="1_3meses"> de 3 meses á 1 ano
+      </label>
+      <label class="option-label">
+        <input type="radio" name="tempo_acamado" value="mais_3meses"> Mais de 1 ano 
+      </label>
+    </div>
+  </div>
+</div>
         
         <!-- Pergunta 3 -->
         <div class="question-group">
           <div class="main-question">
-            <div class="question-text">3. Possui deambulação prévia?</div>
+            <div class="question-text">3.  Deambula sozinho ?</div>
             <div class="answer-options">
               <label class="option-label">
                 <input type="radio" name="deambulacao" value="sim" onclick="toggleSubquestion('deambulacao-details', true)"> Sim
@@ -96,7 +113,7 @@
         <!-- Pergunta 4 -->
         <div class="question-group">
           <div class="main-question">
-            <div class="question-text">4. Necessita de SAD?</div>
+            <div class="question-text">4. Necessita do SAD?</div>
             <div class="answer-options">
               <label class="option-label">
                 <input type="radio" name="sad" value="sim" onclick="toggleSubquestion('sad-details', true)"> Sim
@@ -120,31 +137,52 @@
           </div>
         </div>
         
-        <!-- Pergunta 5 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">5. Necessita de Interconsulta?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="interconsulta" value="sim" onclick="toggleSubquestion('interconsulta-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="interconsulta" value="nao" onclick="toggleSubquestion('interconsulta-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="interconsulta-details" class="subquestion" style="display: none;">
-            <label>Especialidade:</label>
-            <input type="text" name="especialidade_interconsulta">
-            
-            <div style="margin-top: 15px;">
-              <label class="option-label">
-                <input type="checkbox" name="interconsulta_solicitado"> Já foi solicitado?
-              </label>
-            </div>
-          </div>
-        </div>
+        <!-- Pergunta 5 Modificada -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">5. Necessita de Interconsulta?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="interconsulta" value="sim" onclick="toggleSubquestion('interconsulta-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="interconsulta" value="nao" onclick="toggleSubquestion('interconsulta-details', false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <div id="interconsulta-details" class="subquestion" style="display: none;">
+    <label>Especialidade:</label>
+    <div class="option-group">
+
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_interconsulta" value="Ortopedia"> Ortopedia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_interconsulta" value="Cirurgia geral"> Cirurgia geral
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_interconsulta" value="Nefro"> Nefro
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_interconsulta" value="outros" id="outros-interconsulta"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar quando selecionar "Outros" -->
+    <div id="outros-interconsulta-detalhes" style="display: none; margin-top: 10px;">
+      <label>Especifique:</label>
+      <input type="text" name="outra_especialidade">
+    </div>
+    
+    <div style="margin-top: 15px;">
+      <label class="option-label">
+        <input type="checkbox" name="interconsulta_solicitado"> Já foi solicitado?
+      </label>
+    </div>
+  </div>
+</div>
+         
         
         <!-- Pergunta 6 -->
         <div class="question-group">
@@ -401,7 +439,62 @@
       </form>
     </div>
   </div>
+<script>
+  // Função para mostrar campo de especificação quando "Outros" é selecionado
+function toggleOutrosEspecialidade() {
+  const outrosRadio = document.getElementById('outros-interconsulta');
+  const detalhesDiv = document.getElementById('outros-interconsulta-detalhes');
+  
+  if (outrosRadio.checked) {
+    detalhesDiv.style.display = 'block';
+  } else {
+    detalhesDiv.style.display = 'none';
+    // Limpa o campo quando ocultado
+    detalhesDiv.querySelector('input').value = '';
+  }
+}
 
+// Adicione eventos aos radios
+document.querySelectorAll('input[name="especialidade_interconsulta"]').forEach(radio => {
+  radio.addEventListener('change', toggleOutrosEspecialidade);
+});
+
+// Inicialize a verificação
+document.addEventListener('DOMContentLoaded', toggleOutrosEspecialidade);
+// Funções para mostrar/ocultar subquestões
+function toggleSubquestion(elementId, show) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.style.display = show ? 'block' : 'none';
+    
+    // Limpa campos quando ocultado
+    if (!show) {
+      const inputs = element.querySelectorAll('input, select');
+      inputs.forEach(input => {
+        if (input.type !== 'radio' && input.type !== 'checkbox') {
+          input.value = '';
+        } else {
+          input.checked = false;
+        }
+      });
+    }
+  }
+}
+
+// Função específica para o PICC
+function togglePICC(selectElement) {
+  const piccDetails = document.getElementById('picc-details');
+  if (piccDetails) {
+    piccDetails.style.display = selectElement.value === 'dificil' ? 'block' : 'none';
+    
+    // Limpa campos quando ocultado
+    if (selectElement.value !== 'dificil') {
+      const inputs = piccDetails.querySelectorAll('input');
+      inputs.forEach(input => input.checked = false);
+    }
+  }
+}
+</script>
 <script src="script/script2.js"></script>
 <script src="script/generatePDF.js"></script> 
 </html>
