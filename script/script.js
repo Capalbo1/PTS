@@ -6,12 +6,11 @@ form.addEventListener('submit', function(event) {
 
   const dependente = form.dependente.value;
   const suporte = form.suporte.value;
-  const alimenta_sozinho = form.alimenta_sozinho.value;
   const acamado = form.acamado.value;
   const oxigenio = form.oxigenio.value;
   const problema_psicologico = form.problema_psicologico.value;
 
-  const profs = new Set(['Médico', 'Enfermeiro']);
+  const profs = new Set(['Médico', 'Enfermagem','Farmácia', 'Nutrição']);
 
   if (dependente === 'sim') {
     profs.add('Psicólogo');
@@ -23,14 +22,9 @@ form.addEventListener('submit', function(event) {
     profs.add('Assistente Social');
   }
 
-  if (alimenta_sozinho === 'nao') {
-    profs.add('Nutricionista');
-    profs.add('Assistente Social');
-  }
 
   if (acamado === 'sim') {
     profs.add('Fisioterapeuta');
-    profs.add('Nutricionista');
     profs.add('Assistente Social');
   }
 
@@ -51,42 +45,54 @@ form.addEventListener('submit', function(event) {
 
   const totalProfs = profs.size;
 
-  let nivel = '';
+  // Verificação dos níveis conforme a nova lógica
+let nivel = '';
 
-  // Verifica se tem todos os profissionais
-  if (
-    profs.has('Médico') &&
-    profs.has('Enfermeiro') &&
-    temPsico &&
-    temAssis &&
-    temNutri &&
-    temFisio
-  ) {
-    nivel = 'Nível 4 (Todos os profissionais)';
-  }
+// Nível 4: tem todos os profissionais básicos + fisio + psico
+if (
+  profs.has('Médico') &&
+  profs.has('Enfermagem') &&
+  profs.has('Farmácia') &&
+  profs.has('Nutrição') &&
+  temFisio &&
+  temPsico
+) {
+  nivel = 'Nível 4 (Médico, Enfermagem, Farmácia, Nutrição, Fisioterapia e Psicologia)';
+}
+// Nível 3: tem profissionais básicos + fisio (psico opcional)
+else if (
+  profs.has('Médico') &&
+  profs.has('Enfermagem') &&
+  profs.has('Farmácia') &&
+  profs.has('Nutrição') &&
+  temFisio
+) {
+  nivel = 'Nível 3 (Médico, Enfermagem, Farmácia, Nutrição e Fisioterapia)';
+}
+// Nível 2: tem profissionais básicos + psico (sem fisio)
+else if (
+  profs.has('Médico') &&
+  profs.has('Enfermagem') &&
+  profs.has('Farmácia') &&
+  profs.has('Nutrição') &&
+  temPsico
+) {
+  nivel = 'Nível 2 (Médico, Enfermagem, Farmácia, Nutrição e Psicologia)';
+}
+// Nível 1: apenas os profissionais básicos
+else if (
+  profs.has('Médico') &&
+  profs.has('Enfermagem') &&
+  profs.has('Farmácia') &&
+  profs.has('Nutrição')
+) {
+  nivel = 'Nível 1 (Médico, Enfermagem, Farmácia e Nutrição)';
+}
+// Caso não se encaixe em nenhum nível (teoricamente não deveria acontecer)
+else {
+  nivel = 'Nível não determinado';
+}
 
-  // Nível 3: tem Médico + Enfermeiro + Fisio/Nutri/Assistente
-  else if (
-    (temFisio || temNutri || temAssis) &&
-    profs.has('Médico') &&
-    profs.has('Enfermeiro')
-  ) {
-    nivel = 'Nível 3 (Médico, Enfermeiro, e Fisioterapeuta/Nutricionista/Assistente Social)';
-  }
-
-  // Nível 2: Médico + Enfermeiro + Psico ou Assis (sem Nutri/Fisio)
-  else if (
-    (temPsico || temAssis) &&
-    !temNutri &&
-    !temFisio
-  ) {
-    nivel = 'Nível 2 (Médico, Enfermeiro, Psicólogo e/ou Assistente Social)';
-  }
-
-  // Nível 1: Apenas Médico e Enfermeiro
-  else {
-    nivel = 'Nível 1 (Médico e Enfermeiro)';
-  }
 
   // Exibe resultado
   const mensagem = `

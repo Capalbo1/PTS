@@ -4,23 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projeto Terapêutico Singular</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles/styles.css" />
+  <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
 </head>
 <body>
 
   <header>
-    <img src="logo.png" alt="Logo do Projeto" />
+    <img src="assets/img/logob.png" alt="Logo do Projeto" />
     <h1>Projeto Terapêutico Singular</h1>
   </header>
 
   <hr />
+  <nav>
+    <a href="index.html">Triagem</a>
+    <a href="avaliação.html">Avaliação</a>
+    <a href="internação.html">Internação</a>
+  </nav>
 
   <section>
     <h2>Triagem do nível de cuidado do paciente</h2>
     <form id="triagemForm">
 
       <div class="form-row">
-        <label class="pergunta">O paciente é dependente?</label>
+        <label class="pergunta"> Paciente é dependente? (ex: Caminha, Come, toma banho sozinho?).</label>
         <div class="radio-group">
           <label><input type="radio" name="dependente" value="sim" required /> Sim</label>
           <label><input type="radio" name="dependente" value="nao" /> Não</label>
@@ -28,7 +34,7 @@
       </div>
 
       <div class="form-row">
-        <label class="pergunta">Recebe suporte assistencial adequado?</label>
+        <label class="pergunta">Suporte assistencial adequado? (ex: Familiares/cuidadores que faz mercado, farmácia, mercado, banco e etc).</label>
         <div class="radio-group">
           <label><input type="radio" name="suporte" value="sim" required /> Sim</label>
           <label><input type="radio" name="suporte" value="nao" /> Não</label>
@@ -36,15 +42,7 @@
       </div>
 
       <div class="form-row">
-        <label class="pergunta">Se alimenta sozinho?</label>
-        <div class="radio-group">
-          <label><input type="radio" name="alimenta_sozinho" value="sim" required /> Sim</label>
-          <label><input type="radio" name="alimenta_sozinho" value="nao" /> Não</label>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label class="pergunta">O paciente é acamado?</label>
+        <label class="pergunta">Paciente é acamado? (Ex: Não sai da cama)</label>
         <div class="radio-group">
           <label><input type="radio" name="acamado" value="sim" required /> Sim</label>
           <label><input type="radio" name="acamado" value="nao" /> Não</label>
@@ -52,7 +50,7 @@
       </div>
 
       <div class="form-row">
-        <label class="pergunta">Faz uso de oxigênio?</label>
+        <label class="pergunta">Faz uso de oxigênio domiciliar?</label>
         <div class="radio-group">
           <label><input type="radio" name="oxigenio" value="sim" required /> Sim</label>
           <label><input type="radio" name="oxigenio" value="nao" /> Não</label>
@@ -60,7 +58,7 @@
       </div>
 
       <div class="form-row">
-        <label class="pergunta">Possui problemas psicológicos?</label>
+        <label class="pergunta">Possui problemas psicológicos? (Ex: Problemas Familiares/Escolares, Diagnósticos psiquiátricos).</label>
         <div class="radio-group">
           <label><input type="radio" name="problema_psicologico" value="sim" required /> Sim</label>
           <label><input type="radio" name="problema_psicologico" value="nao" /> Não</label>
@@ -84,6 +82,6 @@
     <div id="resultado" style="display:none;"></div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="script/script.js"></script>
 </body>
 </html>

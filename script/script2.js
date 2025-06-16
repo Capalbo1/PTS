@@ -1,37 +1,42 @@
-// Função para mostrar ou esconder uma seção com base no clique do rádio
-function toggleSection(id, show) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.classList.toggle("hidden", !show);
-  }
-}
 
-// Função para mostrar ou esconder campos relacionados ao PICC conforme a dificuldade do AVP
-function togglePICC(selectElement) {
-  const piccDiv = document.getElementById("piccCampos");
-  if (selectElement.value === "dificil") {
-    piccDiv.classList.remove("hidden");
-  } else {
-    piccDiv.classList.add("hidden");
-  }
-}
-
-// Impede envio do formulário e exibe os dados (opcional)
-document.getElementById("formulario").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-  const dados = {};
-  formData.forEach((value, key) => {
-    if (dados[key]) {
-      // Se já existe, transforma em array
-      if (!Array.isArray(dados[key])) {
-        dados[key] = [dados[key]];
+    // Função para mostrar/ocultar subperguntas
+    function toggleSubquestion(elementId, show) {
+      const element = document.getElementById(elementId);
+      if (show) {
+        element.style.display = 'block';
+      } else {
+        element.style.display = 'none';
+        // Limpar campos quando a subpergunta é ocultada
+        const inputs = element.querySelectorAll('input, select');
+        inputs.forEach(input => {
+          if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = false;
+          } else {
+            input.value = '';
+          }
+        });
       }
-      dados[key].push(value);
-    } else {
-      dados[key] = value;
     }
-  });
-  console.log("Dados do formulário:", dados);
-  alert("Formulário enviado! Confira os dados no console.");
-});
+    
+    // Função específica para o PICC
+    function togglePICC(select) {
+      const piccSection = document.getElementById('picc-details');
+      if (select.value === 'dificil') {
+        piccSection.style.display = 'block';
+      } else {
+        piccSection.style.display = 'none';
+        // Limpar os radios do PICC
+        const piccRadios = document.querySelectorAll('input[name="picc"]');
+        piccRadios.forEach(radio => radio.checked = false);
+      }
+    }
+    
+    // Simular clique em alguns elementos para demonstração
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simular respostas para demonstração
+      setTimeout(() => {
+        document.querySelector('input[name="dependente"][value="sim"]').click();
+        document.querySelector('input[name="acamado"][value="sim"]').click();
+        document.querySelector('input[name="deambulacao"][value="sim"]').click();
+      }, 500);
+    });
