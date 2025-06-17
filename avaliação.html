@@ -595,55 +595,656 @@
   </div>
 </div>
         
-        <!-- Pergunta 14 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">14. Suporte nutricional adequado?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="nutricional" value="sim"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="nutricional" value="nao"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div style="margin-top: 15px; margin-left: 40%;">
-            <label class="option-label">
-              <input type="checkbox" name="nutricional_avaliado"> Avaliado?
-            </label>
-          </div>
-        </div>
-        
-        <!-- Pergunta 15 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">15. Acompanhamento psicológico prévio?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="psicologico" value="sim" onclick="toggleSubquestion('psicologico-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="psicologico" value="nao" onclick="toggleSubquestion('psicologico-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="psicologico-details" class="subquestion" style="display: none;">
-            <label>Tempo de acompanhamento:</label>
-            <input type="text" name="tempo_psicologico">
-          </div>
-        </div>
-        
-        <div class="submit-container">
-          <button type="submit">Salvar Avaliação</button>
-        </div>
-      </form>
+     <!-- Pergunta 14 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">14. SUPORTE NUTRICIONAL ADEQUADO?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="suporte_nutricional" value="sim" onclick="toggleSuporteNutricionalDetails(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="suporte_nutricional" value="nao" onclick="toggleSuporteNutricionalDetails(false)"> Não
+      </label>
     </div>
   </div>
-<script>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="suporte-nao-details" class="subquestion" style="display: none;">
+    <label>Já foi solicitado suporte nutricional?</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="solicitacao_nutricional" value="sim" onclick="toggleDataSolicitacao(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="solicitacao_nutricional" value="nao"> Não
+      </label>
+    </div>
+    
+    <!-- Data da solicitação -->
+    <div id="data-solicitacao-container" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Quando foi solicitado?</label>
+      <input type="date" name="data_solicitacao_nutricional">
+    </div>
+  </div>
+</div>
+        
+<!-- Pergunta 15 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">15. ACOMPANHAMENTO PSICOLÓGICO?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="acompanhamento_psicologico" value="sim" onclick="toggleAcompanhamentoPsicologico(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="acompanhamento_psicologico" value="nao" onclick="toggleAcompanhamentoPsicologico(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="psicologico-sim-details" class="subquestion" style="display: none;">
+    <label>Quantas vezes ao mês:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="menos_1"> Menos de 1
+      </label>
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="1_a_2"> 1 à 2
+      </label>
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="2_a_4"> 2 à 4
+      </label>
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="mais_4"> Mais de 4
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="psicologico-nao-details" class="subquestion" style="display: none;">
+    <label>Motivo:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="rede_sobrecarregada"> Rede sobrecarregada
+      </label>
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="nao_procurou"> Não procurou atendimento
+      </label>
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="outros" onclick="toggleOutrosMotivosPsicologico(true)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar outros motivos -->
+    <div id="outros-motivos-psicologico" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique:</label>
+      <input type="text" name="outros_motivos_psicologico">
+    </div>
+  </div>
+</div>
 
+<!-- Pergunta 16 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">16. DISPOSITIVOS?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="dispositivos" value="sim" onclick="toggleDispositivos(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="dispositivos" value="nao" onclick="toggleDispositivos(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="dispositivos-sim-details" class="subquestion" style="display: none;">
+    <label>Quais dispositivos:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="SNE/SNG"> SNE/SNG
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="GTT"> GTT
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="SVD/SVA"> SVD/SVA
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="AVC"> AVC
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="AVP"> AVP
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="outros" onclick="toggleOutrosDispositivos(this.checked)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar outros dispositivos -->
+    <div id="outros-dispositivos-detalhe" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique outros dispositivos:</label>
+      <input type="text" name="outros_dispositivos">
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 17 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">17. RECEBE MEDICAÇÃO POR SNE/GTT?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="medicacao_sne_gtt" value="sim" onclick="toggleMedicacaoSNEGTT(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="medicacao_sne_gtt" value="nao" onclick="toggleMedicacaoSNEGTT(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="sne-gtt-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de alta com SNE/GTT:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="alta_sne_gtt" value="sim" onclick="toggleEnsinoEnfermagem(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_sne_gtt" value="nao" onclick="toggleEnsinoEnfermagem(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_sne_gtt" value="talvez" onclick="toggleEnsinoEnfermagem(true)"> Talvez
+        </label>
+      </div>
+    </div>
+    
+    <!-- Subseção para SIM ou TALVEZ -->
+    <div id="ensino-enfermagem-details" class="subdetalhe" style="display: none;">
+      <label>Equipe de enfermagem promoveu ensino adequado?</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="ensino_enfermagem" value="sim"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="ensino_enfermagem" value="nao"> Não
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 18 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">18. RECEBE DIETA POR SNE/GTT?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="dieta_sne_gtt" value="sim" onclick="toggleDietaSNEGTT(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="dieta_sne_gtt" value="nao" onclick="toggleDietaSNEGTT(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="dieta-sne-gtt-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de alta com SNE/GTT:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="alta_dieta_sne_gtt" value="sim" onclick="toggleEnsinoNutricao(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_dieta_sne_gtt" value="nao" onclick="toggleEnsinoNutricao(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_dieta_sne_gtt" value="talvez" onclick="toggleEnsinoNutricao(true)"> Talvez
+        </label>
+      </div>
+    </div>
+    
+    <!-- Subseção para SIM ou TALVEZ -->
+    <div id="ensino-nutricao-details" class="subdetalhe" style="display: none;">
+      <label>Equipe de nutrição já promoveu ensino adequado?</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="ensino_nutricao" value="sim"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="ensino_nutricao" value="nao"> Não
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 19 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">19. NECESSITA BANHO NO LEITO PÓS ALTA?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="banho_leito" value="sim" onclick="toggleBanhoLeito(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="banho_leito" value="nao" onclick="toggleBanhoLeito(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="banho-leito-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de banho de leito/trocas pós alta:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="possibilidade_banho_leito" value="sim" onclick="toggleEnsinoBanhoLeito(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_banho_leito" value="nao" onclick="toggleEnsinoBanhoLeito(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_banho_leito" value="talvez" onclick="toggleEnsinoBanhoLeito(true)"> Talvez
+        </label>
+      </div>
+    </div>
+    
+    <!-- Subseção para SIM ou TALVEZ -->
+    <div id="ensino-banho-leito-details" class="subdetalhe" style="display: none;">
+      <label>Equipe de enfermagem promoveu ensino adequado?</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="ensino_banho_leito" value="sim"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="ensino_banho_leito" value="nao"> Não
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 20 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">20. NECESSITA DE ASPIRAÇÃO PÓS ALTA?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="aspiracao_pos_alta" value="sim" onclick="toggleAspiracaoPosAlta(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="aspiracao_pos_alta" value="nao" onclick="toggleAspiracaoPosAlta(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="aspiracao-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de aspiração pós alta:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="possibilidade_aspiracao" value="sim" onclick="toggleEnsinoAspiracao(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_aspiracao" value="nao" onclick="toggleEnsinoAspiracao(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_aspiracao" value="talvez" onclick="toggleEnsinoAspiracao(true)"> Talvez
+        </label>
+      </div>
+    </div>
+    
+    <!-- Subseção para SIM ou TALVEZ -->
+    <div id="ensino-aspiracao-details" class="subdetalhe" style="display: none;">
+      <label>Equipe de enfermagem promoveu ensino adequado?</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="ensino_aspiracao" value="sim"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="ensino_aspiracao" value="nao"> Não
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="submit-container">
+  <button type="submit">Salvar Avaliação</button>
+</div>  
+
+
+<script>
+// Funções para controle da pergunta 20
+function toggleAspiracaoPosAlta(necessitaAspiracao) {
+  const container = document.getElementById('aspiracao-sim-details');
+  container.style.display = necessitaAspiracao ? 'block' : 'none';
+  
+  if (!necessitaAspiracao) {
+    // Limpa todos os campos quando escondidos
+    container.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('ensino-aspiracao-details').style.display = 'none';
+  }
+}
+
+function toggleEnsinoAspiracao(mostrar) {
+  const ensinoContainer = document.getElementById('ensino-aspiracao-details');
+  ensinoContainer.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    // Limpa os campos de ensino se ocultados
+    ensinoContainer.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+}
+
+// Configura eventos quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+  // Eventos para a pergunta principal
+  document.querySelectorAll('input[name="aspiracao_pos_alta"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleAspiracaoPosAlta(this.value === 'sim');
+    });
+  });
+  
+  // Eventos para a subpergunta de possibilidade
+  document.querySelectorAll('input[name="possibilidade_aspiracao"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      const mostrarEnsino = this.value === 'sim' || this.value === 'talvez';
+      toggleEnsinoAspiracao(mostrarEnsino);
+    });
+  });
+});
+
+  // Funções para controle da pergunta 19
+function toggleBanhoLeito(necessitaBanhoLeito) {
+  const container = document.getElementById('banho-leito-sim-details');
+  container.style.display = necessitaBanhoLeito ? 'block' : 'none';
+  
+  if (!necessitaBanhoLeito) {
+    // Limpa todos os campos quando escondidos
+    container.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('ensino-banho-leito-details').style.display = 'none';
+  }
+}
+
+function toggleEnsinoBanhoLeito(mostrar) {
+  const ensinoContainer = document.getElementById('ensino-banho-leito-details');
+  ensinoContainer.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    // Limpa os campos de ensino se ocultados
+    ensinoContainer.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+}
+
+// Configura eventos quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+  // Eventos para a pergunta principal
+  document.querySelectorAll('input[name="banho_leito"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleBanhoLeito(this.value === 'sim');
+    });
+  });
+  
+  // Eventos para a subpergunta de possibilidade
+  document.querySelectorAll('input[name="possibilidade_banho_leito"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      const mostrarEnsino = this.value === 'sim' || this.value === 'talvez';
+      toggleEnsinoBanhoLeito(mostrarEnsino);
+    });
+  });
+});
+
+// Funções para controle da pergunta 18
+function toggleDietaSNEGTT(recebeDieta) {
+  const container = document.getElementById('dieta-sne-gtt-sim-details');
+  container.style.display = recebeDieta ? 'block' : 'none';
+  
+  if (!recebeDieta) {
+    // Limpa todos os campos quando escondidos
+    container.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('ensino-nutricao-details').style.display = 'none';
+  }
+}
+
+function toggleEnsinoNutricao(mostrar) {
+  const ensinoContainer = document.getElementById('ensino-nutricao-details');
+  ensinoContainer.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    // Limpa os campos de ensino se ocultados
+    ensinoContainer.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+}
+
+// Configura eventos quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+  // Eventos para a pergunta principal
+  document.querySelectorAll('input[name="dieta_sne_gtt"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleDietaSNEGTT(this.value === 'sim');
+    });
+  });
+  
+  // Eventos para a subpergunta de alta
+  document.querySelectorAll('input[name="alta_dieta_sne_gtt"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      const mostrarEnsino = this.value === 'sim' || this.value === 'talvez';
+      toggleEnsinoNutricao(mostrarEnsino);
+    });
+  });
+});
+// Funções para controle da pergunta 17
+function toggleMedicacaoSNEGTT(usaSNEGTT) {
+  const container = document.getElementById('sne-gtt-sim-details');
+  container.style.display = usaSNEGTT ? 'block' : 'none';
+  
+  if (!usaSNEGTT) {
+    // Limpa todos os campos quando escondidos
+    container.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('ensino-enfermagem-details').style.display = 'none';
+  }
+}
+
+function toggleEnsinoEnfermagem(mostrar) {
+  const ensinoContainer = document.getElementById('ensino-enfermagem-details');
+  ensinoContainer.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    // Limpa os campos de ensino se ocultados
+    ensinoContainer.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+}
+
+// Configura eventos quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+  // Eventos para a pergunta principal
+  document.querySelectorAll('input[name="medicacao_sne_gtt"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleMedicacaoSNEGTT(this.value === 'sim');
+    });
+  });
+  
+  // Eventos para a subpergunta de alta
+  document.querySelectorAll('input[name="alta_sne_gtt"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      const mostrarEnsino = this.value === 'sim' || this.value === 'talvez';
+      toggleEnsinoEnfermagem(mostrarEnsino);
+    });
+  });
+});
+// Funções para controle da pergunta 16
+function toggleDispositivos(usaDispositivos) {
+  document.getElementById('dispositivos-sim-details').style.display = usaDispositivos ? 'block' : 'none';
+  
+  // Limpa os campos quando escondidos
+  if (!usaDispositivos) {
+    document.getElementById('dispositivos-sim-details').querySelectorAll('input').forEach(input => {
+      if (input.type !== 'checkbox') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('outros-dispositivos-detalhe').style.display = 'none';
+  }
+}
+
+function toggleOutrosDispositivos(mostrar) {
+  const outrosDetalhe = document.getElementById('outros-dispositivos-detalhe');
+  outrosDetalhe.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    outrosDetalhe.querySelector('input').value = '';
+  }
+}
+
+// Adiciona ao evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 16
+  document.querySelectorAll('input[name="dispositivos"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleDispositivos(this.value === 'sim');
+    });
+  });
+  
+  // Configura eventos para outros dispositivos
+  document.querySelector('input[name="dispositivos_tipo"][value="outros"]')
+    .addEventListener('change', function() {
+      toggleOutrosDispositivos(this.checked);
+    });
+});
+// Funções para controle da pergunta 15
+function toggleAcompanhamentoPsicologico(temAcompanhamento) {
+  document.getElementById('psicologico-sim-details').style.display = temAcompanhamento ? 'block' : 'none';
+  document.getElementById('psicologico-nao-details').style.display = temAcompanhamento ? 'none' : 'block';
+  
+  // Limpa os campos quando escondidos
+  if (!temAcompanhamento) {
+    document.getElementById('psicologico-sim-details').querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  } else {
+    document.getElementById('psicologico-nao-details').querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('outros-motivos-psicologico').style.display = 'none';
+  }
+}
+
+function toggleOutrosMotivosPsicologico(mostrar) {
+  const outrosMotivos = document.getElementById('outros-motivos-psicologico');
+  outrosMotivos.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    outrosMotivos.querySelector('input').value = '';
+  }
+}
+
+// Adicione ao seu evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 15
+  document.querySelectorAll('input[name="acompanhamento_psicologico"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleAcompanhamentoPsicologico(this.value === 'sim');
+    });
+  });
+  
+  // Configura eventos para motivos
+  document.querySelectorAll('input[name="motivo_sem_psicologico"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleOutrosMotivosPsicologico(this.value === 'outros');
+    });
+  });
+});
+
+// Funções para controle da pergunta 14
+function toggleSuporteNutricionalDetails(temSuporte) {
+  const naoDetails = document.getElementById('suporte-nao-details');
+  naoDetails.style.display = temSuporte ? 'none' : 'block';
+  
+  // Limpa os campos quando escondidos
+  if (temSuporte) {
+    naoDetails.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('data-solicitacao-container').style.display = 'none';
+  }
+}
+
+function toggleDataSolicitacao(mostrar) {
+  const container = document.getElementById('data-solicitacao-container');
+  container.style.display = mostrar ? 'block' : 'none';
+  
+  if (!mostrar) {
+    container.querySelector('input').value = '';
+  }
+}
+
+// Adicione ao seu evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 14
+  document.querySelectorAll('input[name="suporte_nutricional"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleSuporteNutricionalDetails(this.value === 'sim');
+    });
+  });
+  
+  // Configura eventos para solicitação nutricional
+  document.querySelectorAll('input[name="solicitacao_nutricional"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleDataSolicitacao(this.value === 'sim');
+    });
+  });
+});
 // Funções para controle da pergunta 13
 function toggleCuidadosRespiratorios(necessitaCuidados) {
   const detailsElement = document.getElementById('cuidados-respiratorios-details');
