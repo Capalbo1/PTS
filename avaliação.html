@@ -27,6 +27,7 @@
     <div class="form-container">
       <form id="formulario">
         <!-- Pergunta 1 Modificada -->
+<!-- Exemplo para a Pergunta 1 (faça o mesmo para as outras) -->
 <div class="question-group">
   <div class="main-question">
     <div class="question-text">1. Paciente é dependente?</div>
@@ -39,6 +40,8 @@
       </label>
     </div>
   </div>
+  <!-- ... -->
+</div>
   
   <div id="dependencia-details" class="subquestion" style="display: none;">
     <label>Grau de dependência:</label>
@@ -219,11 +222,11 @@
             </div>
           </div>
         </div>
-        
+<hr>
         <!-- Pergunta 7 -->
         <div class="question-group">
           <div class="main-question">
-            <div class="question-text">7. AVP?</div>
+            <div class="question-text">7. Acesso Venoso Periférico?</div>
             <div class="answer-options">
               <label class="option-label">
                 <input type="radio" name="avp" value="sim" onclick="toggleSubquestion('avp-details', true)"> Sim
@@ -257,51 +260,99 @@
           </div>
         </div>
         
-        <!-- Pergunta 8 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">8. Lesão por Pressão?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="lesao" value="sim" onclick="toggleSubquestion('lesao-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="lesao" value="nao" onclick="toggleSubquestion('lesao-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="lesao-details" class="subquestion" style="display: none;">
-            <label>Local:</label>
-            <input type="text" name="local_lesao">
-            
-            <label style="margin-top: 10px;">Grau:</label>
-            <input type="text" name="grau_lesao">
-          </div>
-        </div>
+        <!-- Pergunta 8 - Lesão por Pressão -->
+<!-- Pergunta 8 - Lesão por Pressão -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">8. Lesão por pressão?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="lesao" value="sim" onclick="toggleSubquestion('lesao-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="lesao" value="nao" onclick="toggleSubquestion('lesao-details', false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <div id="lesao-details" class="subquestion" style="display: none;">
+    <label>Local:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="local_lesao" value="sacral" onclick="selecionarLocalLesao()"> Sacral
+      </label>
+      <label class="option-label">
+        <input type="radio" name="local_lesao" value="calcaneo" onclick="selecionarLocalLesao()"> Calcâneo
+      </label>
+      <label class="option-label">
+        <input type="radio" name="local_lesao" value="trocater" onclick="selecionarLocalLesao()"> Trocânter
+      </label>
+      <label class="option-label">
+        <input type="radio" name="local_lesao" value="outros" onclick="selecionarLocalLesao()"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar quando selecionar "Outros" -->
+    <div id="outros-lesao-detalhes" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique o local:</label>
+      <input type="text" name="outro_local_lesao">
+    </div>
+    
+    <!-- Campo para selecionar o grau (aparece quando qualquer local é selecionado) -->
+    <div id="grau-lesao-container" style="display: none; margin-top: 15px;">
+      <label>Grau:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="grau_lesao" value="1"> 1
+        </label>
+        <label class="option-label">
+          <input type="radio" name="grau_lesao" value="2"> 2
+        </label>
+        <label class="option-label">
+          <input type="radio" name="grau_lesao" value="3"> 3
+        </label>
+        <label class="option-label">
+          <input type="radio" name="grau_lesao" value="4"> 4
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
         
-        <!-- Pergunta 9 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">9. Suporte Familiar?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="suporte_familiar" value="sim" onclick="toggleSubquestion('suporte-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="suporte_familiar" value="nao" onclick="toggleSubquestion('suporte-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="suporte-details" class="subquestion" style="display: none;">
-            <label>Quem?</label>
-            <input type="text" name="quem_suporte">
-            
-            <label style="margin-top: 10px;">Quantas pessoas?</label>
-            <input type="number" name="quantidade_suporte" min="0">
-          </div>
-        </div>
+ <!-- Pergunta 9 - Rede de Apoio -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">9. Possui rede de apoio?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="rede_apoio" value="sim" onclick="toggleSubquestion('rede-apoio-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="rede_apoio" value="nao" onclick="toggleSubquestion('rede-apoio-details', false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <div id="rede-apoio-details" class="subquestion" style="display: none;">
+    <label>Quantas pessoas pode contar?</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="quantidade_apoio" value="1-2" onclick="toggleSubquestion('quem-apoio-container', true)"> 1 à 2
+      </label>
+      <label class="option-label">
+        <input type="radio" name="quantidade_apoio" value="2-4" onclick="toggleSubquestion('quem-apoio-container', true)"> 2 à 4
+      </label>
+      <label class="option-label">
+        <input type="radio" name="quantidade_apoio" value="mais-4" onclick="toggleSubquestion('quem-apoio-container', true)"> Mais de 4
+      </label>
+    </div>
+    
+    <div id="quem-apoio-container" style="display: none; margin-top: 15px;">
+      <label>Quem são (nomes/parentesco):</label>
+      <textarea name="quem_apoio" rows="3" placeholder="Ex: Maria - esposa, João - filho..."></textarea>
+    </div>
+  </div>
+</div>
         
         <!-- Pergunta 10 -->
         <div class="question-group">
@@ -440,19 +491,58 @@
     </div>
   </div>
 <script>
-  // Função para mostrar campo de especificação quando "Outros" é selecionado
-function toggleOutrosEspecialidade() {
-  const outrosRadio = document.getElementById('outros-interconsulta');
-  const detalhesDiv = document.getElementById('outros-interconsulta-detalhes');
+
+  function selecionarLocalLesao() {
+  const localSelecionado = document.querySelector('input[name="local_lesao"]:checked').value;
+  const outrosDetalhes = document.getElementById('outros-lesao-detalhes');
+  const grauContainer = document.getElementById('grau-lesao-container');
   
-  if (outrosRadio.checked) {
-    detalhesDiv.style.display = 'block';
+  // Mostra sempre o campo de grau quando qualquer local é selecionado
+  grauContainer.style.display = 'block';
+  
+  // Mostra ou esconde o campo "Outros" conforme necessário
+  if (localSelecionado === 'outros') {
+    outrosDetalhes.style.display = 'block';
   } else {
-    detalhesDiv.style.display = 'none';
-    // Limpa o campo quando ocultado
-    detalhesDiv.querySelector('input').value = '';
+    outrosDetalhes.style.display = 'none';
+    // Limpa o campo de texto quando não selecionado
+    document.querySelector('input[name="outro_local_lesao"]').value = '';
   }
 }
+
+// Inicialização para garantir que os campos aparecem corretamente ao carregar
+document.addEventListener('DOMContentLoaded', function() {
+  const lesaoDetails = document.getElementById('lesao-details');
+  const localLesao = document.querySelector('input[name="local_lesao"]:checked');
+  
+  if (localLesao) {
+    document.getElementById('grau-lesao-container').style.display = 'block';
+    
+    if (localLesao.value === 'outros') {
+      document.getElementById('outros-lesao-detalhes').style.display = 'block';
+    }
+  }
+  
+  // Limpa todos os campos se mudar para "Não"
+  document.querySelectorAll('input[name="lesao"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      if (this.value === 'nao') {
+        // Limpa todos os inputs dentro da lesão-details
+        const inputs = lesaoDetails.querySelectorAll('input');
+        inputs.forEach(input => {
+          if (input.type === 'radio' || input.type === 'checkbox') {
+            input.checked = false;
+          } else {
+            input.value = '';
+          }
+        });
+        // Esconde os containers
+        document.getElementById('outros-lesao-detalhes').style.display = 'none';
+        document.getElementById('grau-lesao-container').style.display = 'none';
+      }
+    });
+  });
+});
 
 // Adicione eventos aos radios
 document.querySelectorAll('input[name="especialidade_interconsulta"]').forEach(radio => {
@@ -492,6 +582,36 @@ function togglePICC(selectElement) {
       const inputs = piccDetails.querySelectorAll('input');
       inputs.forEach(input => input.checked = false);
     }
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  // Lista de todas as questões de rádio do formulário
+  const todasQuestoes = [
+    'dependente', 'acamado', 'deambulacao', 'sad', 'interconsulta', 
+    'encaminhamento', 'avp', 'lesao', 'rede_apoio', 'residencia', 
+    'beneficio', 'respiratorio', 'psicologico', 'nutricional'
+  ];
+
+  // Desmarca todas as opções
+  todasQuestoes.forEach(nome => {
+    const radios = document.querySelectorAll(`input[name="${nome}"]`);
+    radios.forEach(radio => radio.checked = false);
+  });
+
+  // Esconde todas as subseções
+  document.querySelectorAll('.subquestion').forEach(el => {
+    el.style.display = 'none';
+  });
+});
+
+// Adicione esta função ao seu script
+function toggleOutrosEspecialidade(checkbox) {
+  const outrosDetalhes = document.getElementById('outros-interconsulta-detalhes');
+  if (checkbox.checked && checkbox.value === 'outros') {
+    outrosDetalhes.style.display = 'block';
+  } else {
+    outrosDetalhes.style.display = 'none';
+    document.querySelector('input[name="outra_especialidade"]').value = '';
   }
 }
 </script>

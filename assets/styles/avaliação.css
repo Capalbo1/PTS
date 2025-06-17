@@ -273,3 +273,31 @@
         padding: 15px;
       }
     }
+
+    .subdetalhe {
+  background-color: #f5f5f5;
+  border-left: 3px solid #4CAF50;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 0 5px 5px 0;
+}
+
+.option-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f0f8ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.option-label input {
+  margin-right: 8px;
+}

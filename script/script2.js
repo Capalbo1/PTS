@@ -31,12 +31,3 @@
       }
     }
     
-    // Simular clique em alguns elementos para demonstração
-    document.addEventListener('DOMContentLoaded', function() {
-      // Simular respostas para demonstração
-      setTimeout(() => {
-        document.querySelector('input[name="dependente"][value="sim"]').click();
-        document.querySelector('input[name="acamado"][value="sim"]').click();
-        document.querySelector('input[name="deambulacao"][value="sim"]').click();
-      }, 500);
-    });
