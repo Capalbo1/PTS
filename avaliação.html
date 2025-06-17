@@ -354,94 +354,246 @@
   </div>
 </div>
         
-        <!-- Pergunta 10 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">10. Possui residência?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="residencia" value="sim" onclick="toggleSubquestion('residencia-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="residencia" value="nao" onclick="toggleSubquestion('residencia-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="residencia-details" class="subquestion" style="display: none;">
-            <label>Tipo:</label>
-            <select name="tipo_residencia">
-              <option>Casa própria</option>
-              <option>Ambiente familiar</option>
-              <option>Casa de repouso</option>
-              <option>Ambiente comunitário</option>
-            </select>
-          </div>
-        </div>
+       <!-- Pergunta 10 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">10. Possuí Lar/residência?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="residencia" value="sim" onclick="toggleResidenciaDetails(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="residencia" value="nao" onclick="toggleResidenciaDetails(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="residencia-sim-details" class="subquestion" style="display: none;">
+    <label>Situação:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="situacao_residencia" value="sozinho" onclick="toggleSubquestion('morando-sozinho-details', true)"> Mora sozinho
+      </label>
+      <label class="option-label">
+        <input type="radio" name="situacao_residencia" value="com-outros" onclick="toggleSubquestion('morando-com-outros-details', true)"> Mora com outros
+      </label>
+      <label class="option-label">
+        <input type="radio" name="situacao_residencia" value="repouso" onclick="toggleSubquestion('casa-repouso-details', true)"> Casa de repouso
+      </label>
+    </div>
+    
+    <!-- Detalhes para quem mora com outros -->
+    <div id="morando-com-outros-details" class="subdetalhe" style="display: none;">
+      <label>Com quem mora:</label>
+      <input type="text" name="quem_mora_com" placeholder="Ex: Filhos, cônjuge, etc.">
+    </div>
+  </div>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="residencia-nao-details" class="subquestion" style="display: none;">
+    <label>Assistente social acionou:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="assistencia_social" value="rede-apoio" onclick="toggleRedeApoioDetails(true)"> Rede de apoio
+      </label>
+      <label class="option-label">
+        <input type="radio" name="assistencia_social" value="autoridades" onclick="toggleAutoridadesDetails(true)"> Autoridades
+      </label>
+    </div>
+    
+    <!-- Seção para Rede de Apoio -->
+    <div id="rede-apoio-details" class="subdetalhe" style="display: none;">
+      <label>Tipo de rede:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="checkbox" name="rede_apoio_tipo" value="familia"> Família
+        </label>
+        <label class="option-label">
+          <input type="checkbox" name="rede_apoio_tipo" value="vizinhos"> Vizinhos
+        </label>
+        <label class="option-label">
+          <input type="checkbox" name="rede_apoio_tipo" value="amigos"> Amigos
+        </label>
+        <label class="option-label">
+          <input type="checkbox" name="rede_apoio_tipo" value="igreja"> Igreja
+        </label>
+      </div>
+    </div>
+    
+    <!-- Seção para Autoridades -->
+    <div id="autoridades-details" class="subdetalhe" style="display: none;">
+      <label>Autoridade acionada:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="autoridade_acionada" value="conselho_idoso"> Conselho do Idoso
+        </label>
+        <label class="option-label">
+          <input type="radio" name="autoridade_acionada" value="conselho_tutelar"> Conselho Tutelar
+        </label>
+        <label class="option-label">
+          <input type="radio" name="autoridade_acionada" value="outros" onclick="toggleOutrosAutoridades(true)"> Outros
+        </label>
+      </div>
+      
+      <!-- Campo para especificar outros -->
+      <div id="outros-autoridades-detalhes" class="subdetalhe" style="display: none; margin-top: 10px;">
+        <label>Especifique:</label>
+        <input type="text" name="outra_autoridade">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 11 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">11. RECEBE BENEFÍCIO DO GOVERNO?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="beneficio" value="sim" onclick="toggleBeneficioDetails(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="beneficio" value="nao" onclick="toggleBeneficioDetails(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="beneficio-sim-details" class="subquestion" style="display: none;">
+    <label>Tipo de benefício:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="tipo_beneficio" value="bolsa_familia"> Bolsa Família
+      </label>
+      <label class="option-label">
+        <input type="radio" name="tipo_beneficio" value="aposentadoria"> Aposentadoria
+      </label>
+      <label class="option-label">
+        <input type="radio" name="tipo_beneficio" value="inss"> INSS
+      </label>
+      <label class="option-label">
+        <input type="radio" name="tipo_beneficio" value="bpc" onclick="toggleBPCDetails(true)"> BPC (LOAS)
+      </label>
+    </div>
+    
+    <!-- Detalhes para BPC -->
+    <div id="bpc-details" class="subdetalhe" style="display: none;">
+      <label>Tipo de BPC:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="tipo_bpc" value="por_idade"> Por idade
+        </label>
+        <label class="option-label">
+          <input type="radio" name="tipo_bpc" value="por_deficiencia"> Por deficiência
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="beneficio-nao-details" class="subquestion" style="display: none;">
+    <label>Assistente social explicou os direitos que o usuário tem?</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="direitos_explicados" value="sim"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="direitos_explicados" value="nao"> Não
+      </label>
+    </div>
+  </div>
+</div>
         
-        <!-- Pergunta 11 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">11. Recebe benefício do governo?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="beneficio" value="sim" onclick="toggleSubquestion('beneficio-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="beneficio" value="nao" onclick="toggleSubquestion('beneficio-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="beneficio-details" class="subquestion" style="display: none;">
-            <label>Qual?</label>
-            <input type="text" name="qual_beneficio">
-          </div>
-        </div>
-        
-        <!-- Pergunta 12 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">12. Possui vínculo com a rede de saúde?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <select name="vinculo_saude">
-                  <option>UBS</option>
-                  <option>CAPS</option>
-                  <option>CRAS</option>
-                  <option>SAD</option>
-                  <option>Outros</option>
-                </select>
-              </label>
-            </div>
-          </div>
-        </div>
-        
+       <!-- Pergunta 12 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">12. POSSUI VÍNCULO COM A REDE DE SAÚDE?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="vinculo_saude" value="sim" onclick="toggleVinculoSaudeDetails(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="vinculo_saude" value="nao" onclick="toggleVinculoSaudeDetails(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="vinculo-sim-details" class="subquestion" style="display: none;">
+    <label>Quais serviços possui vínculo? (Marque todos que aplicar)</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="UBS"> UBS
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="CIR"> CIR
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="CAPS AD"> CAPS AD
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="CAPS IJ"> CAPS IJ
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="CAPS 2"> CAPS 2
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="SAD"> SAD
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="CASA JAU"> CASA JAU
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="vinculo-nao-details" class="subquestion" style="display: none;">
+    <label>Motivo:</label>
+    <textarea name="motivo_sem_vinculo" rows="3" placeholder="Descreva o motivo da falta de vínculo..."></textarea>
+  </div>
+</div>
+        <hr> <p>Enfermagem</p>
         <!-- Pergunta 13 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">13. Cuidados respiratórios avançados?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="respiratorio" value="sim" onclick="toggleSubquestion('respiratorio-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="respiratorio" value="nao" onclick="toggleSubquestion('respiratorio-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="respiratorio-details" class="subquestion" style="display: none;">
-            <div class="option-group">
-              <label class="option-label">
-                <input type="checkbox" name="respiratorio_solicitado"> Já solicitado
-              </label>
-              <label class="option-label">
-                <input type="checkbox" name="respiratorio_em_maos"> Está em mãos?
-              </label>
-            </div>
-          </div>
-        </div>
+      <!-- Pergunta 13 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">13. CUIDADOS RESPIRATÓRIOS?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="cuidados_respiratorios" value="sim" onclick="toggleCuidadosRespiratorios(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="cuidados_respiratorios" value="nao" onclick="toggleCuidadosRespiratorios(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="cuidados-respiratorios-details" class="subquestion" style="display: none;">
+    <label>Quais cuidados? (Marque todos que aplicar)</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="oxigenio"> Oxigênio
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="cpap"> CPAP
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="tqt"> TQT
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="outros" onclick="toggleOutrosCuidados(this)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar outros cuidados -->
+    <div id="outros-cuidados-detalhes" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique outros cuidados:</label>
+      <input type="text" name="outros_cuidados">
+    </div>
+  </div>
+</div>
         
         <!-- Pergunta 14 -->
         <div class="question-group">
@@ -492,6 +644,191 @@
   </div>
 <script>
 
+// Funções para controle da pergunta 13
+function toggleCuidadosRespiratorios(necessitaCuidados) {
+  const detailsElement = document.getElementById('cuidados-respiratorios-details');
+  detailsElement.style.display = necessitaCuidados ? 'block' : 'none';
+  
+  // Limpa os campos quando escondidos
+  if (!necessitaCuidados) {
+    detailsElement.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.checked = false;
+    });
+    document.getElementById('outros-cuidados-detalhes').style.display = 'none';
+    document.querySelector('input[name="outros_cuidados"]').value = '';
+  }
+}
+
+function toggleOutrosCuidados(checkbox) {
+  const outrosDetalhes = document.getElementById('outros-cuidados-detalhes');
+  outrosDetalhes.style.display = checkbox.checked ? 'block' : 'none';
+  
+  if (!checkbox.checked) {
+    document.querySelector('input[name="outros_cuidados"]').value = '';
+  }
+}
+
+// Adicione ao seu evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 13
+  document.querySelectorAll('input[name="cuidados_respiratorios"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleCuidadosRespiratorios(this.value === 'sim');
+    });
+  });
+});
+// Funções para controle da pergunta 12
+function toggleVinculoSaudeDetails(possuiVinculo) {
+  document.getElementById('vinculo-sim-details').style.display = possuiVinculo ? 'block' : 'none';
+  document.getElementById('vinculo-nao-details').style.display = possuiVinculo ? 'none' : 'block';
+  
+  // Limpa os campos quando escondidos
+  if (!possuiVinculo) {
+    const simSection = document.getElementById('vinculo-sim-details');
+    simSection.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.checked = false;
+    });
+  } else {
+    document.getElementById('vinculo-nao-details').querySelector('textarea').value = '';
+  }
+}
+
+// Adicione ao seu evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 12
+  document.querySelectorAll('input[name="vinculo_saude"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleVinculoSaudeDetails(this.value === 'sim');
+    });
+  });
+});
+
+
+// Funções para controle da pergunta 11
+function toggleBeneficioDetails(recebeBeneficio) {
+  document.getElementById('beneficio-sim-details').style.display = recebeBeneficio ? 'block' : 'none';
+  document.getElementById('beneficio-nao-details').style.display = recebeBeneficio ? 'none' : 'block';
+  
+  // Limpa os campos quando escondidos
+  if (!recebeBeneficio) {
+    const simSection = document.getElementById('beneficio-sim-details');
+    simSection.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+    document.getElementById('bpc-details').style.display = 'none';
+  } else {
+    const naoSection = document.getElementById('beneficio-nao-details');
+    naoSection.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+}
+
+function toggleBPCDetails(show) {
+  const element = document.getElementById('bpc-details');
+  element.style.display = show ? 'block' : 'none';
+  if (!show) {
+    element.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+}
+
+// Adicione ao seu evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 11
+  document.querySelectorAll('input[name="beneficio"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleBeneficioDetails(this.value === 'sim');
+    });
+  });
+  
+  // Configura eventos para o tipo de benefício
+  document.querySelectorAll('input[name="tipo_beneficio"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleBPCDetails(this.value === 'bpc');
+    });
+  });
+});
+  // Funções para controle da pergunta 10
+function toggleResidenciaDetails(temResidencia) {
+  document.getElementById('residencia-sim-details').style.display = temResidencia ? 'block' : 'none';
+  document.getElementById('residencia-nao-details').style.display = temResidencia ? 'none' : 'block';
+  
+  // Limpa os campos quando escondidos
+  if (!temResidencia) {
+    const simSection = document.getElementById('residencia-sim-details');
+    simSection.querySelectorAll('input, select').forEach(input => {
+      if (input.type !== 'radio' && input.type !== 'checkbox') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.querySelectorAll('#residencia-sim-details .subdetalhe').forEach(el => {
+      el.style.display = 'none';
+    });
+  } else {
+    const naoSection = document.getElementById('residencia-nao-details');
+    naoSection.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio' && input.type !== 'checkbox') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.querySelectorAll('#residencia-nao-details .subdetalhe').forEach(el => {
+      el.style.display = 'none';
+    });
+  }
+}
+
+function toggleRedeApoioDetails(show) {
+  const element = document.getElementById('rede-apoio-details');
+  element.style.display = show ? 'block' : 'none';
+  if (!show) {
+    element.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.checked = false;
+    });
+  }
+  // Esconde a seção de autoridades se estiver visível
+  document.getElementById('autoridades-details').style.display = 'none';
+}
+
+function toggleAutoridadesDetails(show) {
+  const element = document.getElementById('autoridades-details');
+  element.style.display = show ? 'block' : 'none';
+  if (!show) {
+    element.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio' && input.type !== 'checkbox') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('outros-autoridades-detalhes').style.display = 'none';
+  }
+  // Esconde a seção de rede de apoio se estiver visível
+  document.getElementById('rede-apoio-details').style.display = 'none';
+}
+
+function toggleOutrosAutoridades(show) {
+  const element = document.getElementById('outros-autoridades-detalhes');
+  element.style.display = show ? 'block' : 'none';
+  if (!show) {
+    element.querySelector('input').value = '';
+  }
+}
+
+// Adicione estas funções ao seu evento DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Configura eventos para a pergunta 10
+  document.querySelectorAll('input[name="residencia"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      toggleResidenciaDetails(this.value === 'sim');
+    });
+  });
+});
   function selecionarLocalLesao() {
   const localSelecionado = document.querySelector('input[name="local_lesao"]:checked').value;
   const outrosDetalhes = document.getElementById('outros-lesao-detalhes');
