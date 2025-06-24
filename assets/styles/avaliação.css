@@ -301,3 +301,25 @@
 .option-label input {
   margin-right: 8px;
 }
+
+
+.metas-padrao-container {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.metas-padrao-container h2 {
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.meta-padrao-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

@@ -158,34 +158,59 @@
          
         
         <!-- Pergunta 5  padrão interconsulta de select para  checked mais de 1  ,  gerar meta realizar documentação  -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">5. Necessita Encaminhamento?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="encaminhamento" value="sim" onclick="toggleSubquestion('encaminhamento-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="encaminhamento" value="nao" onclick="toggleSubquestion('encaminhamento-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="encaminhamento-details" class="subquestion" style="display: none;">
-            <label>Especialidade:</label>
-            <select name="especialidade_encaminhamento">
-              <option value="">Selecione</option>
-              <option>Cardiologia</option>
-              <option>Neurologia</option>
-              <option>Ortopedia</option>
-              <option>Cirurgia geral</option>
-              <option>Endócrino</option>
-              <option>Gastro</option>
-              <option>Nefro</option>
-              <option>Urologia</option>
-            </select>
-          </div>
-        </div>
+<!-- Pergunta 5 Modificada - Agora com checkboxes para múltiplos encaminhamentos -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">5. Necessita Encaminhamento?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="encaminhamento" value="sim" onclick="toggleSubquestion('encaminhamento-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="encaminhamento" value="nao" onclick="toggleSubquestion('encaminhamento-details', false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <div id="encaminhamento-details" class="subquestion" style="display: none;">
+    <label>Especialidades para encaminhamento:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Cardiologia"> Cardiologia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Neurologia"> Neurologia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Ortopedia"> Ortopedia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Cirurgia geral"> Cirurgia geral
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Endocrinologia"> Endocrinologia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Gastroenterologia"> Gastroenterologia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Nefrologia"> Nefrologia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="Urologia"> Urologia
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="especialidade_encaminhamento[]" value="outros" id="outros-encaminhamento" onclick="toggleOutrosEncaminhamento(this)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar quando selecionar "Outros" -->
+    <div id="outros-encaminhamento-detalhes" style="display: none; margin-top: 10px;">
+      <label>Especifique:</label>
+      <input type="text" name="outra_especialidade_encaminhamento">
+    </div>
+  </div>
+</div>
 <hr>
         <!-- Pergunta 6 se dificil gerar meta  (passagem de pic) -->
         <div class="question-group">
@@ -348,19 +373,7 @@
         </label>
       </div>
     </div>
-    
-    <!-- Subseção para SIM ou TALVEZ -->
-    <div id="ensino-enfermagem-details" class="subdetalhe" style="display: none;">
-      <label></label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="ensino_enfermagem" value="sim"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="ensino_enfermagem" value="nao"> Não
-        </label>
-      </div>
-    </div>
+
   </div>
 </div>
 
@@ -413,23 +426,6 @@
   </div>
   
   <!-- Seção para resposta NÃO -->
-  <div id="suporte-nao-details" class="subquestion" style="display: none;">
-    <label>Já foi solicitado suporte nutricional?</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="radio" name="solicitacao_nutricional" value="sim" onclick="toggleDataSolicitacao(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="solicitacao_nutricional" value="nao"> Não
-      </label>
-    </div>
-    
-    <!-- Data da solicitação -->
-    <div id="data-solicitacao-container" class="subdetalhe" style="display: none; margin-top: 10px;">
-      <label>Quando foi solicitado?</label>
-      <input type="date" name="data_solicitacao_nutricional">
-    </div>
-  </div>
 </div>
 
 <!-- Pergunta 12 se sim e sim OU TALVEZ  meta: Promover  ensino adequado pela Equipe de nutri -->
@@ -857,6 +853,14 @@
 </div>  
 
 <div class="resumo-container">
+  <div class="metas-padrao-container">
+  <h2>Metas Padrões</h2>
+  <div id="metas-padrao"></div>
+</div>
+
+<div class="resumo-container">
+  <!-- ... o restante do seu código existente ... -->
+</div>
   <h2>Resumo e Metas</h2>
   <div id="resumo-dependencia"></div>
   <div id="resumo-acamado"></div>
@@ -883,6 +887,260 @@
 
 <script>
 
+ function atualizarResumoNutricional() {
+  const container = document.getElementById('resumo-nutricional');
+  const suporteNutricional = document.querySelector('input[name="suporte_nutricional"]:checked');
+  
+  if (!suporteNutricional || suporteNutricional.value === 'sim') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const solicitacaoNutricional = document.querySelector('input[name="solicitacao_nutricional"]:checked');
+  let texto = 'Suporte nutricional inadequado';
+  let meta = 'Meta: Prover intervenção nutricional adequada.';
+  
+  if (solicitacaoNutricional) {
+    if (solicitacaoNutricional.value === 'sim') {
+      const dataSolicitacao = document.querySelector('input[name="data_solicitacao_nutricional"]').value;
+      texto += ` (Já solicitado${dataSolicitacao ? ` em ${dataSolicitacao}` : ''})`;
+      meta = 'Meta: Reavaliar intervenção nutricional';
+    } else {
+      texto += ' (Não solicitado)';
+    }
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+// Funções auxiliares (já existentes no seu código)
+function toggleSuporteNutricionalDetails(mostrar) {
+  const element = document.getElementById('suporte-nao-details');
+  element.style.display = mostrar ? 'none' : 'block';
+  if (!mostrar) {
+    element.querySelectorAll('input').forEach(input => {
+      if (input.type !== 'radio') {
+        input.value = '';
+      } else {
+        input.checked = false;
+      }
+    });
+    document.getElementById('data-solicitacao-container').style.display = 'none';
+  }
+  atualizarResumoNutricional();
+}
+
+function toggleDataSolicitacao(mostrar) {
+  const element = document.getElementById('data-solicitacao-container');
+  element.style.display = mostrar ? 'block' : 'none';
+  if (!mostrar) {
+    element.querySelector('input').value = '';
+  }
+  atualizarResumoNutricional();
+}
+  function atualizarResumoBanhoLeito() {
+  const container = document.getElementById('resumo-banho-leito');
+  const banhoLeito = document.querySelector('input[name="banho_leito"]:checked');
+  
+  if (!banhoLeito || banhoLeito.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const possibilidadeBanho = document.querySelector('input[name="possibilidade_banho_leito"]:checked');
+  let texto = 'Necessita banho no leito';
+  let meta = '';
+  
+  if (possibilidadeBanho) {
+    texto += ` (Possibilidade pós alta: ${possibilidadeBanho.value === 'sim' ? 'Sim' : possibilidadeBanho.value === 'nao' ? 'Não' : 'Talvez'})`;
+    
+    if (possibilidadeBanho.value === 'sim' || possibilidadeBanho.value === 'talvez') {
+      meta = 'Meta: Promover ensino qualificado para este cuidado pela equipe de enfermagem';
+    }
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+function atualizarResumoMedicacaoSNE() {
+  const container = document.getElementById('resumo-medicacao-sne');
+  const medicacaoSNE = document.querySelector('input[name="medicacao_sne_gtt"]:checked');
+  
+  if (!medicacaoSNE || medicacaoSNE.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const altaSNE = document.querySelector('input[name="alta_sne_gtt"]:checked');
+  let texto = 'Recebe medicação por SNE/GTT';
+  let meta = '';
+  
+  if (altaSNE) {
+    if (altaSNE.value === 'sim' || altaSNE.value === 'talvez') {
+      meta = 'Meta: Promover ensino qualificado para este cuidado pela equipe de enfermagem';
+    }
+    
+    // Adiciona a informação sobre a possibilidade de alta
+    texto += ` (Possibilidade de alta: ${altaSNE.value === 'sim' ? 'Sim' : altaSNE.value === 'nao' ? 'Não' : 'Talvez'})`;
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+  function atualizarResumoDispositivos() {
+  const container = document.getElementById('resumo-dispositivos');
+  const dispositivos = document.querySelector('input[name="dispositivos"]:checked');
+  
+  if (!dispositivos || dispositivos.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const tiposDispositivos = document.querySelectorAll('input[name="dispositivos_tipo"]:checked');
+  let texto = 'Dispositivos: ';
+  let metas = []; // Array para armazenar múltiplas metas
+  
+  const dispositivosSelecionados = Array.from(tiposDispositivos).map(el => el.value);
+  
+  if (dispositivosSelecionados.length > 0) {
+    texto += dispositivosSelecionados.join(', ');
+    
+    // Verifica cada dispositivo selecionado e adiciona metas específicas
+    dispositivosSelecionados.forEach(dispositivo => {
+      switch(dispositivo) {
+        case 'SNE/SNG':
+        case 'SVD/SVA':
+          metas.push('Avaliar possibilidade de retirada');
+          break;
+        case 'AVC':
+          metas.push('Avaliar sinais flogísticos e possibilidade de retirada');
+          break;
+        case 'AVP':
+          metas.push('Avaliar sinais flogísticos');
+          break;
+        case 'outros':
+          const outrosDispositivos = document.querySelector('input[name="outros_dispositivos"]').value;
+          if (outrosDispositivos) {
+            metas.push(`Avaliar dispositivo: ${outrosDispositivos}`);
+          }
+          break;
+      }
+    });
+  } else {
+    texto += 'não especificados';
+  }
+  
+  // Remove metas duplicadas e cria o HTML
+  const metasUnicas = [...new Set(metas)];
+  const metasHTML = metasUnicas.map(meta => `<span class="meta-tag">${meta}</span>`).join('');
+  
+  container.innerHTML = criarItemResumo(texto, metasHTML);
+}
+  function atualizarResumoAVP() {
+  const container = document.getElementById('resumo-avp');
+  const avp = document.querySelector('input[name="avp"]:checked');
+  
+  if (!avp || avp.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const selectDificuldade = document.querySelector('select[name="dificuldade_avp"]');
+  const dificuldade = selectDificuldade.value;
+  let texto = 'Acesso Venoso Periférico: ';
+  let meta = '';
+  
+  if (dificuldade === 'facil') {
+    texto += 'Fácil';
+    meta = 'Meta: Manter acesso';
+  } 
+  else if (dificuldade === 'medio') {
+    texto += 'Médio';
+    meta = 'Meta: Avaliar necessidade de cateter';
+  } 
+  else if (dificuldade === 'dificil') {
+    texto += 'Difícil';
+    meta = 'Meta: Passar PICC';
+  } 
+  else {
+    texto += 'Dificuldade não especificada';
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+// Função para mostrar/ocultar o campo "Outros" no encaminhamento
+function toggleOutrosEncaminhamento(checkbox) {
+  const outrosDetalhes = document.getElementById('outros-encaminhamento-detalhes');
+  outrosDetalhes.style.display = checkbox.checked ? 'block' : 'none';
+  
+  if (!checkbox.checked) {
+    document.querySelector('input[name="outra_especialidade_encaminhamento"]').value = '';
+  }
+}
+
+// Função para atualizar o resumo do encaminhamento (substitua a atual)
+function atualizarResumoEncaminhamento() {
+  const container = document.getElementById('resumo-encaminhamento');
+  const encaminhamento = document.querySelector('input[name="encaminhamento"]:checked');
+  
+  if (!encaminhamento || encaminhamento.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const especialidades = document.querySelectorAll('input[name="especialidade_encaminhamento[]"]:checked');
+  let texto = 'Necessita encaminhamento para: ';
+  let meta = 'Meta: Realizar documentação';
+  
+  const especialidadesSelecionadas = Array.from(especialidades).map(el => {
+    if (el.value === 'outros') {
+      return document.querySelector('input[name="outra_especialidade_encaminhamento"]').value || 'Outros';
+    }
+    return el.value;
+  });
+  
+  if (especialidadesSelecionadas.length > 0) {
+    texto += especialidadesSelecionadas.join(', ');
+    if (especialidadesSelecionadas.length > 1) {
+      meta += ' para múltiplas especialidades';
+    }
+  } else {
+    texto += 'especialidade não especificada';
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+function gerarMetasPadrao() {
+  const container = document.getElementById('metas-padrao');
+  
+  // Lista de metas padrões
+  const metasPadrao = [
+    "1. Internação hospitalar",
+    "2. Antibioticoterapia",
+    "3. Suporte clínico e cuidados de enfermaria"
+  ];
+  
+  // Limpa o container antes de adicionar as metas
+  container.innerHTML = '';
+  
+  // Adiciona cada meta ao container
+  metasPadrao.forEach(meta => {
+    const metaElement = document.createElement('div');
+    metaElement.className = 'meta-padrao-item';
+    metaElement.innerHTML = `
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${meta}
+        <span class="meta-tag">Meta padrão</span>
+      </div>
+    `;
+    container.appendChild(metaElement);
+  });
+}
+
+// Chame esta função quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+  gerarMetasPadrao();
+  // ... o restante do seu código de inicialização ...
+});
   // Função para atualizar todos os resumos
 function atualizarResumos() {
   atualizarResumoDependencia();
