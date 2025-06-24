@@ -875,6 +875,126 @@
 
 
 <script>
+function atualizarResumoVinculoSaude() {
+  const container = document.getElementById('resumo-vinculo-saude');
+  const resposta = document.querySelector('input[name="vinculo_saude"]:checked');
+  
+  // Limpa se não selecionado ou for "Sim"
+  if (!resposta || resposta.value === 'sim') {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Texto e meta quando for "Não"
+  const texto = 'Paciente não possui vínculo com a rede de saúde';
+  const meta = 'Orientar consulta anual com médico de família e comunidade pela UBS pertencente';
+
+  container.innerHTML = `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        <div class="meta-tag">${meta}</div>
+      </div>
+    </div>
+  `;
+}
+
+// Função para mostrar/esconder detalhes
+function toggleVinculoSaudeDetails(mostrar) {
+  document.getElementById('vinculo-sim-details').style.display = mostrar ? 'block' : 'none';
+  document.getElementById('vinculo-nao-details').style.display = mostrar ? 'none' : 'block';
+  atualizarResumoVinculoSaude();
+}
+
+  function atualizarResumoBeneficio() {
+  const container = document.getElementById('resumo-beneficio');
+  const resposta = document.querySelector('input[name="beneficio"]:checked');
+  
+  // Limpa se não selecionado ou for "Sim"
+  if (!resposta || resposta.value === 'sim') {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Texto e meta quando for "Não"
+  const texto = 'Paciente não recebe benefício do governo';
+  const meta = 'Avaliar se tem direitos/Orientar sobre benefícios disponíveis';
+
+  container.innerHTML = `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        <div class="meta-tag">${meta}</div>
+      </div>
+    </div>
+  `;
+}
+
+// Função para mostrar/esconder detalhes (já existente)
+function toggleBeneficioDetails(mostrar) {
+  const element = document.getElementById('beneficio-sim-details');
+  element.style.display = mostrar ? 'block' : 'none';
+  atualizarResumoBeneficio();
+}
+
+  function atualizarResumoResidencia() {
+  const container = document.getElementById('resumo-residencia');
+  const resposta = document.querySelector('input[name="residencia"]:checked');
+  
+  // Limpa se não selecionado ou for "Sim"
+  if (!resposta || resposta.value === 'sim') {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Texto e meta quando for "Não"
+  const texto = 'Paciente não possui lar/residência';
+  const meta = 'Acionar rede de apoio/autoridade pertinente';
+
+  container.innerHTML = `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        <div class="meta-tag">${meta}</div>
+      </div>
+    </div>
+  `;
+}
+
+// Função para mostrar/esconder detalhes (já existente)
+function toggleResidenciaDetails(mostrar) {
+  const element = document.getElementById(mostrar ? 'residencia-sim-details' : 'residencia-nao-details');
+  element.style.display = mostrar ? 'block' : 'none';
+  atualizarResumoResidencia();
+}
+function atualizarResumoRedeApoio() {
+  const container = document.getElementById('resumo-rede-apoio');
+  const resposta = document.querySelector('input[name="rede_apoio"]:checked');
+  
+  // Limpa se não selecionado ou for "Sim"
+  if (!resposta || resposta.value === 'sim') {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Texto e meta quando for "Não"
+  const texto = 'Paciente não possui rede de apoio';
+  const meta = 'Acionar autoridade pertinente/ajuda';
+
+  container.innerHTML = `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        <div class="meta-tag">${meta}</div>
+      </div>
+    </div>
+  `;
+}
+
   function atualizarResumoSAD() {
   const container = document.getElementById('resumo-sad');
   const respostaSAD = document.querySelector('input[name="sad"]:checked');
