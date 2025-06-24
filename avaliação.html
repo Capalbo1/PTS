@@ -113,37 +113,12 @@
           </div>
         </div>
         
-        <!-- Pergunta 4 -->
-        <div class="question-group">
-          <div class="main-question">
-            <div class="question-text">4. Necessita do SAD?</div>
-            <div class="answer-options">
-              <label class="option-label">
-                <input type="radio" name="sad" value="sim" onclick="toggleSubquestion('sad-details', true)"> Sim
-              </label>
-              <label class="option-label">
-                <input type="radio" name="sad" value="nao" onclick="toggleSubquestion('sad-details', false)"> Não
-              </label>
-            </div>
-          </div>
-          
-          <div id="sad-details" class="subquestion" style="display: none;">
-            <label>Status do SAD:</label>
-            <div class="option-group">
-              <label class="option-label">
-                <input type="checkbox" name="sad_solicitado"> Já solicitado
-              </label>
-              <label class="option-label">
-                <input type="checkbox" name="sad_resolvido"> Já resolvido
-              </label>
-            </div>
-          </div>
-        </div>
+
         
-        <!-- Pergunta 5 Modificada -->
+        <!-- Pergunta 4 Modificada  abrir campo outros input text e meta a realizar e se já solicitado --> 
 <div class="question-group">
   <div class="main-question">
-    <div class="question-text">5. Necessita de Interconsulta?</div>
+    <div class="question-text">4. Necessita de Interconsulta?</div>
     <div class="answer-options">
       <label class="option-label">
         <input type="radio" name="interconsulta" value="sim" onclick="toggleSubquestion('interconsulta-details', true)"> Sim
@@ -178,19 +153,14 @@
       <input type="text" name="outra_especialidade">
     </div>
     
-    <div style="margin-top: 15px;">
-      <label class="option-label">
-        <input type="checkbox" name="interconsulta_solicitado"> Já foi solicitado?
-      </label>
-    </div>
   </div>
 </div>
          
         
-        <!-- Pergunta 6 -->
+        <!-- Pergunta 5  padrão interconsulta de select para  checked mais de 1  ,  gerar meta realizar documentação  -->
         <div class="question-group">
           <div class="main-question">
-            <div class="question-text">6. Necessita Encaminhamento?</div>
+            <div class="question-text">5. Necessita Encaminhamento?</div>
             <div class="answer-options">
               <label class="option-label">
                 <input type="radio" name="encaminhamento" value="sim" onclick="toggleSubquestion('encaminhamento-details', true)"> Sim
@@ -214,19 +184,13 @@
               <option>Nefro</option>
               <option>Urologia</option>
             </select>
-            
-            <div style="margin-top: 15px;">
-              <label class="option-label">
-                <input type="checkbox" name="documentacao_encaminhamento"> Documentação já realizada?
-              </label>
-            </div>
           </div>
         </div>
 <hr>
-        <!-- Pergunta 7 -->
+        <!-- Pergunta 6 se dificil gerar meta  (passagem de pic) -->
         <div class="question-group">
           <div class="main-question">
-            <div class="question-text">7. Acesso Venoso Periférico?</div>
+            <div class="question-text">6. Acesso Venoso Periférico?</div>
             <div class="answer-options">
               <label class="option-label">
                 <input type="radio" name="avp" value="sim" onclick="toggleSubquestion('avp-details', true)"> Sim
@@ -245,26 +209,14 @@
               <option value="medio">Médio</option>
               <option value="dificil">Difícil</option>
             </select>
-            
-            <div id="picc-details" class="subquestion" style="display: none; margin-top: 15px;">
-              <label>Solicitado PICC?</label>
-              <div class="option-group">
-                <label class="option-label">
-                  <input type="radio" name="picc" value="sim"> Sim
-                </label>
-                <label class="option-label">
-                  <input type="radio" name="picc" value="nao"> Não
-                </label>
-              </div>
-            </div>
           </div>
         </div>
         
-        <!-- Pergunta 8 - Lesão por Pressão -->
-<!-- Pergunta 8 - Lesão por Pressão -->
+        <!-- Pergunta 7 - Lesão por Pressão -->
+<!-- Pergunta 7 - Lesão por Pressão os campos de grau para cada check de lesão se sim para ferida meta DE Comissão feridas-->
 <div class="question-group">
   <div class="main-question">
-    <div class="question-text">8. Lesão por pressão?</div>
+    <div class="question-text">7. Lesão por pressão?</div>
     <div class="answer-options">
       <label class="option-label">
         <input type="radio" name="lesao" value="sim" onclick="toggleSubquestion('lesao-details', true)"> Sim
@@ -279,16 +231,16 @@
     <label>Local:</label>
     <div class="option-group">
       <label class="option-label">
-        <input type="radio" name="local_lesao" value="sacral" onclick="selecionarLocalLesao()"> Sacral
+        <input type="checkbox" name="local_lesao" value="sacral" onclick="selecionarLocalLesao()"> Sacral
       </label>
       <label class="option-label">
-        <input type="radio" name="local_lesao" value="calcaneo" onclick="selecionarLocalLesao()"> Calcâneo
+        <input type="checkbox" name="local_lesao" value="calcaneo" onclick="selecionarLocalLesao()"> Calcâneo
       </label>
       <label class="option-label">
-        <input type="radio" name="local_lesao" value="trocater" onclick="selecionarLocalLesao()"> Trocânter
+        <input type="checkbox" name="local_lesao" value="trocater" onclick="selecionarLocalLesao()"> Trocânter
       </label>
       <label class="option-label">
-        <input type="radio" name="local_lesao" value="outros" onclick="selecionarLocalLesao()"> Outros
+        <input type="checkbox" name="local_lesao" value="outros" onclick="selecionarLocalLesao()"> Outros
       </label>
     </div>
     
@@ -318,11 +270,358 @@
     </div>
   </div>
 </div>
-        
- <!-- Pergunta 9 - Rede de Apoio -->
+
+
+<!-- Pergunta 8 se sim gerar meta de acompanhamento de dispositvo -->
 <div class="question-group">
   <div class="main-question">
-    <div class="question-text">9. Possui rede de apoio?</div>
+    <div class="question-text">8. Dispositivos?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="dispositivos" value="sim" onclick="toggleDispositivos(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="dispositivos" value="nao" onclick="toggleDispositivos(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="dispositivos-sim-details" class="subquestion" style="display: none;">
+    <label>Quais dispositivos:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="SNE/SNG"> SNE/SNG
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="GTT"> GTT
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="SVD/SVA"> SVD/SVA
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="AVC"> AVC
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="AVP"> AVP
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="dispositivos_tipo" value="outros" onclick="toggleOutrosDispositivos(this.checked)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar outros dispositivos -->
+    <div id="outros-dispositivos-detalhe" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique outros dispositivos:</label>
+      <input type="text" name="outros_dispositivos">
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 9 se sim e sim OU TALVEZ  meta: Promover  ensino adequado pela Equipe de enfermagem  -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">9. Recebe medicação por SNE/GTT?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="medicacao_sne_gtt" value="sim" onclick="toggleMedicacaoSNEGTT(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="medicacao_sne_gtt" value="nao" onclick="toggleMedicacaoSNEGTT(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="sne-gtt-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de alta com SNE/GTT:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="alta_sne_gtt" value="sim" onclick="toggleEnsinoEnfermagem(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_sne_gtt" value="nao" onclick="toggleEnsinoEnfermagem(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_sne_gtt" value="talvez" onclick="toggleEnsinoEnfermagem(true)"> Talvez
+        </label>
+      </div>
+    </div>
+    
+    <!-- Subseção para SIM ou TALVEZ -->
+    <div id="ensino-enfermagem-details" class="subdetalhe" style="display: none;">
+      <label></label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="ensino_enfermagem" value="sim"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="ensino_enfermagem" value="nao"> Não
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 10 se sim e sim OU TALVEZ  meta: Promover  ensino adequado pela Equipe de enfermagem-->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">10. Necessita banho no leito?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="banho_leito" value="sim" onclick="toggleBanhoLeito(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="banho_leito" value="nao" onclick="toggleBanhoLeito(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="banho-leito-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de banho de leito/trocas pós alta:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="possibilidade_banho_leito" value="sim" onclick="toggleEnsinoBanhoLeito(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_banho_leito" value="nao" onclick="toggleEnsinoBanhoLeito(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_banho_leito" value="talvez" onclick="toggleEnsinoBanhoLeito(true)"> Talvez
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+     <!-- Pergunta 11 SE  NÃO GERAR META -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">11. Suporte nutricional adequado?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="suporte_nutricional" value="sim" onclick="toggleSuporteNutricionalDetails(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="suporte_nutricional" value="nao" onclick="toggleSuporteNutricionalDetails(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="suporte-nao-details" class="subquestion" style="display: none;">
+    <label>Já foi solicitado suporte nutricional?</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="solicitacao_nutricional" value="sim" onclick="toggleDataSolicitacao(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="solicitacao_nutricional" value="nao"> Não
+      </label>
+    </div>
+    
+    <!-- Data da solicitação -->
+    <div id="data-solicitacao-container" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Quando foi solicitado?</label>
+      <input type="date" name="data_solicitacao_nutricional">
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 12 se sim e sim OU TALVEZ  meta: Promover  ensino adequado pela Equipe de nutri -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">12. Recebe dieta por  SNE/GTT?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="dieta_sne_gtt" value="sim" onclick="toggleDietaSNEGTT(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="dieta_sne_gtt" value="nao" onclick="toggleDietaSNEGTT(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="dieta-sne-gtt-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de alta com SNE/GTT:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="alta_dieta_sne_gtt" value="sim" onclick="toggleEnsinoNutricao(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_dieta_sne_gtt" value="nao" onclick="toggleEnsinoNutricao(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="alta_dieta_sne_gtt" value="talvez" onclick="toggleEnsinoNutricao(true)"> Talvez
+        </label>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<hr>
+        <!-- Pergunta 13 -->
+      <!-- Pergunta 13 ADD SUBQUESTÕES EM   TODAS OPÇÕES "POSSIBILIDADE DE ALTA COM EWSTE CUIDADO /SIM TALVEZ E NAO SE SIM OU TALVEZ GERAR META." -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">13. Cuidados respiratórios?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="cuidados_respiratorios" value="sim" onclick="toggleCuidadosRespiratorios(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="cuidados_respiratorios" value="nao" onclick="toggleCuidadosRespiratorios(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="cuidados-respiratorios-details" class="subquestion" style="display: none;">
+    <label>Quais cuidados? (Marque todos que aplicar)</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="oxigenio"> Oxigênio
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="cpap"> CPAP
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="tqt"> TQT
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="tipo_cuidado" value="outros" onclick="toggleOutrosCuidados(this)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar outros cuidados -->
+    <div id="outros-cuidados-detalhes" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique outros cuidados:</label>
+      <input type="text" name="outros_cuidados">
+    </div>
+  </div>
+</div>
+
+<!-- Pergunta 14 se sim e sim OU TALVEZ  meta: Promover  ensino adequado pela Equipe de Fisio -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">14. Necessita de aspiração?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="aspiracao_pos_alta" value="sim" onclick="toggleAspiracaoPosAlta(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="aspiracao_pos_alta" value="nao" onclick="toggleAspiracaoPosAlta(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="aspiracao-sim-details" class="subquestion" style="display: none;">
+    <div class="subquestion-item">
+      <label>Possibilidade de aspiração pós alta:</label>
+      <div class="option-group">
+        <label class="option-label">
+          <input type="radio" name="possibilidade_aspiracao" value="sim" onclick="toggleEnsinoAspiracao(true)"> Sim
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_aspiracao" value="nao" onclick="toggleEnsinoAspiracao(false)"> Não
+        </label>
+        <label class="option-label">
+          <input type="radio" name="possibilidade_aspiracao" value="talvez" onclick="toggleEnsinoAspiracao(true)"> Talvez
+        </label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+<!-- Pergunta 15 -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">15. Acompanhamento psicológico?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="acompanhamento_psicologico" value="sim" onclick="toggleAcompanhamentoPsicologico(true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="acompanhamento_psicologico" value="nao" onclick="toggleAcompanhamentoPsicologico(false)"> Não
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta SIM -->
+  <div id="psicologico-sim-details" class="subquestion" style="display: none;">
+    <label>Quantas vezes ao mês:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="menos_1"> Menos de 1
+      </label>
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="1_a_2"> 1 à 2
+      </label>
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="2_a_4"> 2 à 4
+      </label>
+      <label class="option-label">
+        <input type="radio" name="frequencia_psicologico" value="mais_4"> Mais de 4
+      </label>
+    </div>
+  </div>
+  
+  <!-- Seção para resposta NÃO -->
+  <div id="psicologico-nao-details" class="subquestion" style="display: none;">
+    <label>Motivo:</label>
+    <div class="option-group">
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="rede_sobrecarregada"> Rede sobrecarregada
+      </label>
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="nao_procurou"> Não procurou atendimento
+      </label>
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="outros" onclick="toggleOutrosMotivosPsicologico(true)"> Não necessita de Acompanhamento
+      </label>
+      <label class="option-label">
+        <input type="radio" name="motivo_sem_psicologico" value="outros" onclick="toggleOutrosMotivosPsicologico(true)"> Outros
+      </label>
+    </div>
+    
+    <!-- Campo para especificar outros motivos -->
+    <div id="outros-motivos-psicologico" class="subdetalhe" style="display: none; margin-top: 10px;">
+      <label>Especifique:</label>
+      <input type="text" name="outros_motivos_psicologico">
+    </div>
+  </div>
+</div>
+<hr>
+
+<!-- Pergunta 16 se sim gerar meta -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">16. Necessita do SAD?</div>
+    <div class="answer-options">
+      <label class="option-label">
+        <input type="radio" name="sad" value="sim" onclick="toggleSubquestion('sad-details', true)"> Sim
+      </label>
+      <label class="option-label">
+        <input type="radio" name="sad" value="nao" onclick="toggleSubquestion('sad-details', false)"> Não
+      </label>
+    </div>
+  </div>
+</div>
+        
+ <!-- Pergunta 17 - Rede de Apoio  se não possui meta -->
+<div class="question-group">
+  <div class="main-question">
+    <div class="question-text">17. Possui rede de apoio?</div>
     <div class="answer-options">
       <label class="option-label">
         <input type="radio" name="rede_apoio" value="sim" onclick="toggleSubquestion('rede-apoio-details', true)"> Sim
@@ -354,10 +653,10 @@
   </div>
 </div>
         
-       <!-- Pergunta 10 -->
+       <!-- Pergunta 18 se não meta -->
 <div class="question-group">
   <div class="main-question">
-    <div class="question-text">10. Possuí Lar/residência?</div>
+    <div class="question-text">18. Possuí Lar/residência?</div>
     <div class="answer-options">
       <label class="option-label">
         <input type="radio" name="residencia" value="sim" onclick="toggleResidenciaDetails(true)"> Sim
@@ -445,10 +744,10 @@
   </div>
 </div>
 
-<!-- Pergunta 11 -->
+<!-- Pergunta 19 se não meta  -->
 <div class="question-group">
   <div class="main-question">
-    <div class="question-text">11. RECEBE BENEFÍCIO DO GOVERNO?</div>
+    <div class="question-text">19. Recebe benefício do governo?</div>
     <div class="answer-options">
       <label class="option-label">
         <input type="radio" name="beneficio" value="sim" onclick="toggleBeneficioDetails(true)"> Sim
@@ -491,24 +790,12 @@
     </div>
   </div>
   
-  <!-- Seção para resposta NÃO -->
-  <div id="beneficio-nao-details" class="subquestion" style="display: none;">
-    <label>Assistente social explicou os direitos que o usuário tem?</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="radio" name="direitos_explicados" value="sim"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="direitos_explicados" value="nao"> Não
-      </label>
-    </div>
-  </div>
 </div>
         
-       <!-- Pergunta 12 -->
+       <!-- Pergunta 20  add campo outros texto se não  meta-->
 <div class="question-group">
   <div class="main-question">
-    <div class="question-text">12. POSSUI VÍNCULO COM A REDE DE SAÚDE?</div>
+    <div class="question-text">20. Possui vinculo com a rede de saúde</div>
     <div class="answer-options">
       <label class="option-label">
         <input type="radio" name="vinculo_saude" value="sim" onclick="toggleVinculoSaudeDetails(true)"> Sim
@@ -542,7 +829,10 @@
         <input type="checkbox" name="servicos_saude" value="SAD"> SAD
       </label>
       <label class="option-label">
-        <input type="checkbox" name="servicos_saude" value="CASA JAU"> CASA JAU
+        <input type="checkbox" name="servicos_saude" value="CASA JAU"> CASA JAÚ
+      </label>
+      <label class="option-label">
+        <input type="checkbox" name="servicos_saude" value="CASA JAU"> OUTROS
       </label>
     </div>
   </div>
@@ -553,367 +843,12 @@
     <textarea name="motivo_sem_vinculo" rows="3" placeholder="Descreva o motivo da falta de vínculo..."></textarea>
   </div>
 </div>
-        <hr> <p>Enfermagem</p>
-        <!-- Pergunta 13 -->
-      <!-- Pergunta 13 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">13. CUIDADOS RESPIRATÓRIOS?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="cuidados_respiratorios" value="sim" onclick="toggleCuidadosRespiratorios(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="cuidados_respiratorios" value="nao" onclick="toggleCuidadosRespiratorios(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="cuidados-respiratorios-details" class="subquestion" style="display: none;">
-    <label>Quais cuidados? (Marque todos que aplicar)</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="checkbox" name="tipo_cuidado" value="oxigenio"> Oxigênio
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="tipo_cuidado" value="cpap"> CPAP
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="tipo_cuidado" value="tqt"> TQT
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="tipo_cuidado" value="outros" onclick="toggleOutrosCuidados(this)"> Outros
-      </label>
-    </div>
-    
-    <!-- Campo para especificar outros cuidados -->
-    <div id="outros-cuidados-detalhes" class="subdetalhe" style="display: none; margin-top: 10px;">
-      <label>Especifique outros cuidados:</label>
-      <input type="text" name="outros_cuidados">
-    </div>
-  </div>
-</div>
+
+<hr>     
+
+
         
-     <!-- Pergunta 14 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">14. SUPORTE NUTRICIONAL ADEQUADO?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="suporte_nutricional" value="sim" onclick="toggleSuporteNutricionalDetails(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="suporte_nutricional" value="nao" onclick="toggleSuporteNutricionalDetails(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta NÃO -->
-  <div id="suporte-nao-details" class="subquestion" style="display: none;">
-    <label>Já foi solicitado suporte nutricional?</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="radio" name="solicitacao_nutricional" value="sim" onclick="toggleDataSolicitacao(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="solicitacao_nutricional" value="nao"> Não
-      </label>
-    </div>
-    
-    <!-- Data da solicitação -->
-    <div id="data-solicitacao-container" class="subdetalhe" style="display: none; margin-top: 10px;">
-      <label>Quando foi solicitado?</label>
-      <input type="date" name="data_solicitacao_nutricional">
-    </div>
-  </div>
-</div>
-        
-<!-- Pergunta 15 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">15. ACOMPANHAMENTO PSICOLÓGICO?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="acompanhamento_psicologico" value="sim" onclick="toggleAcompanhamentoPsicologico(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="acompanhamento_psicologico" value="nao" onclick="toggleAcompanhamentoPsicologico(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="psicologico-sim-details" class="subquestion" style="display: none;">
-    <label>Quantas vezes ao mês:</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="radio" name="frequencia_psicologico" value="menos_1"> Menos de 1
-      </label>
-      <label class="option-label">
-        <input type="radio" name="frequencia_psicologico" value="1_a_2"> 1 à 2
-      </label>
-      <label class="option-label">
-        <input type="radio" name="frequencia_psicologico" value="2_a_4"> 2 à 4
-      </label>
-      <label class="option-label">
-        <input type="radio" name="frequencia_psicologico" value="mais_4"> Mais de 4
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta NÃO -->
-  <div id="psicologico-nao-details" class="subquestion" style="display: none;">
-    <label>Motivo:</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="radio" name="motivo_sem_psicologico" value="rede_sobrecarregada"> Rede sobrecarregada
-      </label>
-      <label class="option-label">
-        <input type="radio" name="motivo_sem_psicologico" value="nao_procurou"> Não procurou atendimento
-      </label>
-      <label class="option-label">
-        <input type="radio" name="motivo_sem_psicologico" value="outros" onclick="toggleOutrosMotivosPsicologico(true)"> Outros
-      </label>
-    </div>
-    
-    <!-- Campo para especificar outros motivos -->
-    <div id="outros-motivos-psicologico" class="subdetalhe" style="display: none; margin-top: 10px;">
-      <label>Especifique:</label>
-      <input type="text" name="outros_motivos_psicologico">
-    </div>
-  </div>
-</div>
 
-<!-- Pergunta 16 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">16. DISPOSITIVOS?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="dispositivos" value="sim" onclick="toggleDispositivos(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="dispositivos" value="nao" onclick="toggleDispositivos(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="dispositivos-sim-details" class="subquestion" style="display: none;">
-    <label>Quais dispositivos:</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="checkbox" name="dispositivos_tipo" value="SNE/SNG"> SNE/SNG
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="dispositivos_tipo" value="GTT"> GTT
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="dispositivos_tipo" value="SVD/SVA"> SVD/SVA
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="dispositivos_tipo" value="AVC"> AVC
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="dispositivos_tipo" value="AVP"> AVP
-      </label>
-      <label class="option-label">
-        <input type="checkbox" name="dispositivos_tipo" value="outros" onclick="toggleOutrosDispositivos(this.checked)"> Outros
-      </label>
-    </div>
-    
-    <!-- Campo para especificar outros dispositivos -->
-    <div id="outros-dispositivos-detalhe" class="subdetalhe" style="display: none; margin-top: 10px;">
-      <label>Especifique outros dispositivos:</label>
-      <input type="text" name="outros_dispositivos">
-    </div>
-  </div>
-</div>
-
-<!-- Pergunta 17 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">17. RECEBE MEDICAÇÃO POR SNE/GTT?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="medicacao_sne_gtt" value="sim" onclick="toggleMedicacaoSNEGTT(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="medicacao_sne_gtt" value="nao" onclick="toggleMedicacaoSNEGTT(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="sne-gtt-sim-details" class="subquestion" style="display: none;">
-    <div class="subquestion-item">
-      <label>Possibilidade de alta com SNE/GTT:</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="alta_sne_gtt" value="sim" onclick="toggleEnsinoEnfermagem(true)"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="alta_sne_gtt" value="nao" onclick="toggleEnsinoEnfermagem(false)"> Não
-        </label>
-        <label class="option-label">
-          <input type="radio" name="alta_sne_gtt" value="talvez" onclick="toggleEnsinoEnfermagem(true)"> Talvez
-        </label>
-      </div>
-    </div>
-    
-    <!-- Subseção para SIM ou TALVEZ -->
-    <div id="ensino-enfermagem-details" class="subdetalhe" style="display: none;">
-      <label>Equipe de enfermagem promoveu ensino adequado?</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="ensino_enfermagem" value="sim"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="ensino_enfermagem" value="nao"> Não
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Pergunta 18 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">18. RECEBE DIETA POR SNE/GTT?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="dieta_sne_gtt" value="sim" onclick="toggleDietaSNEGTT(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="dieta_sne_gtt" value="nao" onclick="toggleDietaSNEGTT(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="dieta-sne-gtt-sim-details" class="subquestion" style="display: none;">
-    <div class="subquestion-item">
-      <label>Possibilidade de alta com SNE/GTT:</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="alta_dieta_sne_gtt" value="sim" onclick="toggleEnsinoNutricao(true)"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="alta_dieta_sne_gtt" value="nao" onclick="toggleEnsinoNutricao(false)"> Não
-        </label>
-        <label class="option-label">
-          <input type="radio" name="alta_dieta_sne_gtt" value="talvez" onclick="toggleEnsinoNutricao(true)"> Talvez
-        </label>
-      </div>
-    </div>
-    
-    <!-- Subseção para SIM ou TALVEZ -->
-    <div id="ensino-nutricao-details" class="subdetalhe" style="display: none;">
-      <label>Equipe de nutrição já promoveu ensino adequado?</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="ensino_nutricao" value="sim"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="ensino_nutricao" value="nao"> Não
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Pergunta 19 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">19. NECESSITA BANHO NO LEITO PÓS ALTA?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="banho_leito" value="sim" onclick="toggleBanhoLeito(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="banho_leito" value="nao" onclick="toggleBanhoLeito(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="banho-leito-sim-details" class="subquestion" style="display: none;">
-    <div class="subquestion-item">
-      <label>Possibilidade de banho de leito/trocas pós alta:</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="possibilidade_banho_leito" value="sim" onclick="toggleEnsinoBanhoLeito(true)"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="possibilidade_banho_leito" value="nao" onclick="toggleEnsinoBanhoLeito(false)"> Não
-        </label>
-        <label class="option-label">
-          <input type="radio" name="possibilidade_banho_leito" value="talvez" onclick="toggleEnsinoBanhoLeito(true)"> Talvez
-        </label>
-      </div>
-    </div>
-    
-    <!-- Subseção para SIM ou TALVEZ -->
-    <div id="ensino-banho-leito-details" class="subdetalhe" style="display: none;">
-      <label>Equipe de enfermagem promoveu ensino adequado?</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="ensino_banho_leito" value="sim"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="ensino_banho_leito" value="nao"> Não
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Pergunta 20 -->
-<div class="question-group">
-  <div class="main-question">
-    <div class="question-text">20. NECESSITA DE ASPIRAÇÃO PÓS ALTA?</div>
-    <div class="answer-options">
-      <label class="option-label">
-        <input type="radio" name="aspiracao_pos_alta" value="sim" onclick="toggleAspiracaoPosAlta(true)"> Sim
-      </label>
-      <label class="option-label">
-        <input type="radio" name="aspiracao_pos_alta" value="nao" onclick="toggleAspiracaoPosAlta(false)"> Não
-      </label>
-    </div>
-  </div>
-  
-  <!-- Seção para resposta SIM -->
-  <div id="aspiracao-sim-details" class="subquestion" style="display: none;">
-    <div class="subquestion-item">
-      <label>Possibilidade de aspiração pós alta:</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="possibilidade_aspiracao" value="sim" onclick="toggleEnsinoAspiracao(true)"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="possibilidade_aspiracao" value="nao" onclick="toggleEnsinoAspiracao(false)"> Não
-        </label>
-        <label class="option-label">
-          <input type="radio" name="possibilidade_aspiracao" value="talvez" onclick="toggleEnsinoAspiracao(true)"> Talvez
-        </label>
-      </div>
-    </div>
-    
-    <!-- Subseção para SIM ou TALVEZ -->
-    <div id="ensino-aspiracao-details" class="subdetalhe" style="display: none;">
-      <label>Equipe de enfermagem promoveu ensino adequado?</label>
-      <div class="option-group">
-        <label class="option-label">
-          <input type="radio" name="ensino_aspiracao" value="sim"> Sim
-        </label>
-        <label class="option-label">
-          <input type="radio" name="ensino_aspiracao" value="nao"> Não
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -921,8 +856,242 @@
   <button type="submit">Salvar Avaliação</button>
 </div>  
 
+<div class="resumo-container">
+  <h2>Resumo e Metas</h2>
+  <div id="resumo-dependencia"></div>
+  <div id="resumo-acamado"></div>
+  <div id="resumo-deambulacao"></div>
+  <div id="resumo-interconsulta"></div>
+  <div id="resumo-encaminhamento"></div>
+  <div id="resumo-avp"></div>
+  <div id="resumo-lesao"></div>
+  <div id="resumo-dispositivos"></div>
+  <div id="resumo-medicacao-sne"></div>
+  <div id="resumo-banho-leito"></div>
+  <div id="resumo-nutricional"></div>
+  <div id="resumo-dieta-sne"></div>
+  <div id="resumo-respiratorio"></div>
+  <div id="resumo-aspiracao"></div>
+  <div id="resumo-psicologico"></div>
+  <div id="resumo-sad"></div>
+  <div id="resumo-rede-apoio"></div>
+  <div id="resumo-residencia"></div>
+  <div id="resumo-beneficio"></div>
+  <div id="resumo-vinculo-saude"></div>
+</div>
+
 
 <script>
+
+  // Função para atualizar todos os resumos
+function atualizarResumos() {
+  atualizarResumoDependencia();
+  atualizarResumoAcamado();
+  atualizarResumoDeambulacao();
+  atualizarResumoInterconsulta();
+  atualizarResumoEncaminhamento();
+  atualizarResumoAVP();
+  atualizarResumoLesao();
+  atualizarResumoDispositivos();
+  atualizarResumoMedicacaoSNE();
+  atualizarResumoBanhoLeito();
+  atualizarResumoNutricional();
+  atualizarResumoDietaSNE();
+  atualizarResumoRespiratorio();
+  atualizarResumoAspiracao();
+  atualizarResumoPsicologico();
+  atualizarResumoSAD();
+  atualizarResumoRedeApoio();
+  atualizarResumoResidencia();
+  atualizarResumoBeneficio();
+  atualizarResumoVinculoSaude();
+}
+
+// Funções individuais para cada resumo
+function atualizarResumoDependencia() {
+  const container = document.getElementById('resumo-dependencia');
+  const dependente = document.querySelector('input[name="dependente"]:checked');
+  
+  if (!dependente || dependente.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const grau = document.querySelector('input[name="grau_dependencia"]:checked');
+  let texto = 'Paciente é dependente';
+  let meta = '';
+  
+  if (grau) {
+    texto += ` (${grau.value === 'parcial' ? 'Dependente Parcial' : 'Dependente Total'})`;
+    meta = 'Meta: Avaliar necessidade de cuidador';
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+function atualizarResumoAcamado() {
+  const container = document.getElementById('resumo-acamado');
+  const acamado = document.querySelector('input[name="acamado"]:checked');
+  
+  if (!acamado || acamado.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const tempo = document.querySelector('input[name="tempo_acamado"]:checked');
+  let texto = 'Paciente está acamado';
+  let meta = 'Meta: Prevenir úlceras por pressão';
+  
+  if (tempo) {
+    let tempoTexto = '';
+    if (tempo.value === 'menos_1mes') tempoTexto = '1 a 3 meses';
+    else if (tempo.value === '1_3meses') tempoTexto = '3 meses a 1 ano';
+    else if (tempo.value === 'mais_3meses') tempoTexto = 'Mais de 1 ano';
+    
+    texto += ` (${tempoTexto})`;
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+function atualizarResumoDeambulacao() {
+  const container = document.getElementById('resumo-deambulacao');
+  const deambula = document.querySelector('input[name="deambulacao"]:checked');
+  
+  if (!deambula || deambula.value === 'sim') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const tipo = document.querySelector('input[name="tipo_deambulacao"]:checked');
+  let texto = 'Paciente não deambula sozinho';
+  let meta = 'Meta: Avaliar necessidade de auxílio para mobilidade';
+  
+  if (tipo) {
+    texto += ` (${tipo.value === 'com_auxilio' ? 'Precisa de auxílio' : 'Não deambula'})`;
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+function atualizarResumoInterconsulta() {
+  const container = document.getElementById('resumo-interconsulta');
+  const interconsulta = document.querySelector('input[name="interconsulta"]:checked');
+  
+  if (!interconsulta || interconsulta.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const especialidades = document.querySelectorAll('input[name="especialidade_interconsulta"]:checked');
+  let texto = 'Necessita interconsulta com: ';
+  let meta = 'Meta: Realizar documentação';
+  
+  const especialidadesSelecionadas = Array.from(especialidades).map(el => {
+    if (el.value === 'outros') {
+      return document.querySelector('input[name="outra_especialidade"]').value || 'Outros';
+    }
+    return el.value;
+  });
+  
+  if (especialidadesSelecionadas.length > 0) {
+    texto += especialidadesSelecionadas.join(', ');
+    if (especialidadesSelecionadas.length > 1) {
+      meta += ' para múltiplas especialidades';
+    }
+  } else {
+    texto += 'especialidade não especificada';
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+function atualizarResumoEncaminhamento() {
+  const container = document.getElementById('resumo-encaminhamento');
+  const encaminhamento = document.querySelector('input[name="encaminhamento"]:checked');
+  
+  if (!encaminhamento || encaminhamento.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const especialidade = document.querySelector('select[name="especialidade_encaminhamento"]');
+  let texto = 'Necessita encaminhamento';
+  let meta = 'Meta: Realizar documentação';
+  
+  if (especialidade && especialidade.value) {
+    texto += ` para ${especialidade.value}`;
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+// Função auxiliar para criar os itens de resumo
+function criarItemResumo(texto, meta = '') {
+  return `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        ${meta ? '<span class="meta-tag">' + meta + '</span>' : ''}
+      </div>
+    </div>
+  `;
+}
+
+// Adicione listeners para atualizar os resumos quando o formulário muda
+document.addEventListener('DOMContentLoaded', function() {
+  // Adicione listeners para todas as perguntas
+  const todasPerguntas = document.querySelectorAll('input[type="radio"], input[type="checkbox"], select');
+  todasPerguntas.forEach(elemento => {
+    elemento.addEventListener('change', atualizarResumos);
+  });
+  
+  // Atualize os resumos inicialmente
+  atualizarResumos();
+});
+
+// Implemente as outras funções de atualização de resumo seguindo o mesmo padrão
+// (atualizarResumoAVP, atualizarResumoLesao, etc.) conforme suas necessidades
+// Cada uma deve verificar as respostas e gerar o texto e meta apropriados
+
+// Exemplo para a pergunta de lesão por pressão:
+function atualizarResumoLesao() {
+  const container = document.getElementById('resumo-lesao');
+  const lesao = document.querySelector('input[name="lesao"]:checked');
+  
+  if (!lesao || lesao.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const locais = document.querySelectorAll('input[name="local_lesao"]:checked');
+  const grau = document.querySelector('input[name="grau_lesao"]:checked');
+  
+  let texto = 'Lesão por pressão: ';
+  let meta = 'Meta: Comissão de feridas';
+  
+  const locaisSelecionados = Array.from(locais).map(el => {
+    if (el.value === 'outros') {
+      return document.querySelector('input[name="outro_local_lesao"]').value || 'Outro local';
+    }
+    return el.value;
+  });
+  
+  if (locaisSelecionados.length > 0) {
+    texto += locaisSelecionados.join(', ');
+  } else {
+    texto += 'local não especificado';
+  }
+  
+  if (grau) {
+    texto += ` (Grau ${grau.value})`;
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+// Implemente as demais funções seguindo o mesmo padrão
 // Funções para controle da pergunta 20
 function toggleAspiracaoPosAlta(necessitaAspiracao) {
   const container = document.getElementById('aspiracao-sim-details');
