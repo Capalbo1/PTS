@@ -685,17 +685,6 @@
     </div>
   </div>
   
-  <!-- Seção para resposta NÃO -->
-  <div id="residencia-nao-details" class="subquestion" style="display: none;">
-    <label>Assistente social acionou:</label>
-    <div class="option-group">
-      <label class="option-label">
-        <input type="radio" name="assistencia_social" value="rede-apoio" onclick="toggleRedeApoioDetails(true)"> Rede de apoio
-      </label>
-      <label class="option-label">
-        <input type="radio" name="assistencia_social" value="autoridades" onclick="toggleAutoridadesDetails(true)"> Autoridades
-      </label>
-    </div>
     
     <!-- Seção para Rede de Apoio -->
     <div id="rede-apoio-details" class="subdetalhe" style="display: none;">
@@ -886,6 +875,104 @@
 
 
 <script>
+
+function atualizarResumoRespiratorio() {
+  const container = document.getElementById('resumo-respiratorio');
+  const cuidadosRespiratorios = document.querySelector('input[name="cuidados_respiratorios"]:checked');
+  
+  if (!cuidadosRespiratorios || cuidadosRespiratorios.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const dispositivos = document.querySelectorAll('input[name="tipo_cuidado"]:checked');
+  let texto = 'Cuidados respiratórios: ';
+  let metas = [];
+  
+  const dispositivosSelecionados = Array.from(dispositivos).map(el => el.value);
+  
+  if (dispositivosSelecionados.length > 0) {
+    texto += dispositivosSelecionados.map(d => {
+      switch(d) {
+        case 'oxigenio': return 'Oxigênio';
+        case 'cpap': return 'CPAP';
+        case 'tqt': return 'TQT';
+        case 'outros': return document.querySelector('input[name="outros_cuidados"]').value || 'Outros';
+        default: return d;
+      }
+    }).join(', ');
+    
+    // Verifica cada dispositivo e adiciona metas específicas
+    if (dispositivosSelecionados.includes('oxigenio') || dispositivosSelecionados.includes('cpap')) {
+      metas.push('Realizar documentação');
+    }
+    
+    if (dispositivosSelecionados.includes('tqt')) {
+      metas.push('Avaliar possibilidade de troca, oclusão ou decanular');
+    }
+    
+    // Meta para outros dispositivos se especificado
+    if (dispositivosSelecionados.includes('outros')) {
+      const outros = document.querySelector('input[name="outros_cuidados"]').value;
+      if (outros) {
+        metas.push(`Avaliar dispositivo: ${outros}`);
+      }
+    }
+  } else {
+    texto += 'não especificados';
+  }
+  
+  // Remove metas duplicadas e cria o HTML
+  const metasUnicas = [...new Set(metas)];
+  const metasHTML = metasUnicas.map(meta => `<span class="meta-tag">${meta}</span>`).join('');
+  
+  container.innerHTML = criarItemResumo(texto, metasHTML);
+}
+
+  function atualizarResumoDietaSNE() {
+  const container = document.getElementById('resumo-dieta-sne');
+  const dietaSNE = document.querySelector('input[name="dieta_sne_gtt"]:checked');
+  
+  if (!dietaSNE || dietaSNE.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const altaDieta = document.querySelector('input[name="alta_dieta_sne_gtt"]:checked');
+  let texto = 'Recebe dieta por SNE/GTT';
+  let meta = '';
+  
+  if (altaDieta) {
+    texto += ` (Possibilidade de alta: ${altaDieta.value === 'sim' ? 'Sim' : 
+              altaDieta.value === 'nao' ? 'Não' : 'Talvez'})`;
+    
+    if (altaDieta.value === 'sim' || altaDieta.value === 'talvez') {
+      meta = 'Meta: Promover ensino qualificado para esse cuidado pela equipe de nutrição';
+    }
+    else if (altaDieta.value === 'nao') {
+      meta = 'Meta: Proporcionar intervenção nutricional adequada';
+    }
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
+
+// Funções auxiliares
+function toggleDietaSNEGTT(mostrar) {
+  const element = document.getElementById('dieta-sne-gtt-sim-details');
+  element.style.display = mostrar ? 'block' : 'none';
+  if (!mostrar) {
+    element.querySelectorAll('input').forEach(input => {
+      input.checked = false;
+    });
+  }
+  atualizarResumoDietaSNE();
+}
+
+function toggleEnsinoNutricao(mostrar) {
+  // Esta função pode ser usada para lógicas adicionais se necessário
+  atualizarResumoDietaSNE();
+}
 
  function atualizarResumoNutricional() {
   const container = document.getElementById('resumo-nutricional');
