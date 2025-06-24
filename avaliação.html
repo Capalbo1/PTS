@@ -875,6 +875,61 @@
 
 
 <script>
+  function atualizarResumoSAD() {
+  const container = document.getElementById('resumo-sad');
+  const respostaSAD = document.querySelector('input[name="sad"]:checked');
+  
+  // Limpa se não selecionado ou for "Não"
+  if (!respostaSAD || respostaSAD.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Texto base
+  const texto = 'Paciente necessita do SAD';
+  
+  // Metas solicitadas (duas metas separadas)
+  const metas = [
+    'Preparar documentação completa',
+    'Entrar em contato com o SAD para agendamento'
+  ];
+
+  // HTML final
+  container.innerHTML = `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        <div class="metas-container">
+          ${metas.map(meta => `<div class="meta-tag">${meta}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+function atualizarResumoAspiracao() {
+  const container = document.getElementById('resumo-aspiracao');
+  const aspiracao = document.querySelector('input[name="aspiracao_pos_alta"]:checked');
+  
+  if (!aspiracao || aspiracao.value === 'nao') {
+    container.innerHTML = '';
+    return;
+  }
+  
+  const possibilidade = document.querySelector('input[name="possibilidade_aspiracao"]:checked');
+  let texto = 'Necessita de aspiração';
+  let meta = '';
+  
+  if (possibilidade) {
+    texto += ` (Possibilidade pós alta: ${possibilidade.value === 'sim' ? 'Sim' : possibilidade.value === 'nao' ? 'Não' : 'Talvez'})`;
+    
+    if (possibilidade.value === 'sim' || possibilidade.value === 'talvez') {
+      meta = 'Meta: Promover ensino qualificado pela equipe de fisioterapia';
+    }
+  }
+  
+  container.innerHTML = criarItemResumo(texto, meta);
+}
 
 function atualizarResumoRespiratorio() {
   const container = document.getElementById('resumo-respiratorio');
@@ -1244,7 +1299,6 @@ function atualizarResumos() {
   atualizarResumoDietaSNE();
   atualizarResumoRespiratorio();
   atualizarResumoAspiracao();
-  atualizarResumoPsicologico();
   atualizarResumoSAD();
   atualizarResumoRedeApoio();
   atualizarResumoResidencia();
