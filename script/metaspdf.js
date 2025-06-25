@@ -1,3 +1,4 @@
+// Função para gerar PDF das metas
 function gerarPDFMetas() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
