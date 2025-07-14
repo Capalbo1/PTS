@@ -421,7 +421,7 @@ function imprimirPDF() {
     // Adicione mais verificações aqui para outras opções, se necessário
 
     // Adiciona logo
-    const logoUrl = 'assets/img/logosantacasa.png';
+    const logoUrl = '../assets/img/logo.png';
     doc.addImage(logoUrl, 'PNG', 15, 5, 40, 20);
 
     // Cabeçalho do PDF
