@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
     <title>Avaliação Pré Anestésica</title>
 </head>
 <body>
     <header>
         <h1>Triagem Pré Anestésica</h1>
-        <img src="../assets/img/logo.png" alt="Logo Santa Casa">
+        <img src="assets/img/logosantacasa.png" alt="Logo Santa Casa">
     </header>
 
     <main>
@@ -276,7 +276,7 @@
         <button id="enviar" type="submit" class="footer">Enviar <i></i></button>
     </footer>
 </body>
-<script src="abrirobs.js"></script>
+<script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="abrirobs.js"></script>
 <div id="alerta" style="display: none;">
@@ -285,31 +285,5 @@
         <button onclick="imprimirPDF()">Imprimir Solicitação em PDF</button>
         <button onclick="fecharAlerta()">Fechar</button>
     </div>
-
-    <button id="openModal">Abrir Modal</button>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <div class="modal-header">
-          <h2>Confirmação de Exames</h2>
-          <img src="../assets/img/logosantacasa.png" alt="Logo" class="logo">
-        </div>
-        <div class="modal-body">
-          <table>
-            <tr>
-              <td>Dado 1</td>
-              <td>Dado 2</td>
-            </tr>
-            <tr>
-              <td>Dado 3</td>
-              <td>Dado 4</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  
-  
+</div>
 </html>
