@@ -1,0 +1,365 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0baad1;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    
+}
+  
+header img {
+    width: 10%;
+    height: auto;
+}
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3em;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 2px; /* espaçamento entre letras */
+    text-transform: uppercase; /* transforma o texto em maiúsculas */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* sombra leve */
+}
+
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 70vh;
+    padding: 10px;
+}
+section {
+
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+section:hover {
+    transform: scale(1.02);
+}
+
+h2 {
+    margin-top: 0;
+    color: #0baad1;
+    font-size: 1.2em; /* Tamanho reduzido do título */
+}
+
+label {
+    display: block;
+    margin: 8px 0 4px;
+    font-size: 0.85em; /* Fonte menor para labels */
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px; /* Espaçamento menor entre os inputs */
+}
+
+.sinais-porte{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sinais-vitais-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.sinais-vitais-form label {
+    grid-column: span 1;
+}
+
+.sv {
+    width: 70px; /* Largura menor para os inputs */
+    padding: 6px; /* Menos padding */
+}
+
+input[type="text"],
+input[type="number"] {
+    flex: 1;
+    min-width: 50%;
+    padding: 6px; /* Menor padding para inputs */
+    margin-bottom: 8px; /* Menor margem */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #0baad1;
+}
+
+button {
+    
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #000000;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 5px;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+
+#enviar {
+    background-color: #0aca54;
+    padding: 10px 15px; /* Adicione padding aos botões */
+    width: 400px;
+}
+#reset {
+    background-color: #cf411d;
+    padding: 6px 4px; /* Adicione padding aos botões */
+
+}
+
+.cadastro-enviar {
+    margin-top: 10px;
+}
+
+.sinais-vitais {
+    display: flex;
+    flex-direction: column;
+}
+
+.controles {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+fieldset {
+    padding: 10px; /* Menor padding para reduzir o tamanho do fieldset */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9em; /* Reduz o tamanho da fonte dentro do fieldset */
+    width: auto;
+    margin-top: 0;
+}
+
+.fieldset-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+    padding: 10px; /* Menor padding para o grid */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 90%;
+}
+
+div.porte{
+    width: 50%;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 6vh;
+    padding: 6px;
+    background-color: #0baad1;
+}
+main {
+    display: flex;
+    flex-direction: row; /* Padrão para telas grandes */
+}
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column; /* Altera para coluna em telas menores */
+    }
+
+    .cadastro-paciente{
+        width: 90%;
+    }
+    .sinais-vitais{
+        width: 90%;
+    }
+
+
+}
+
+@media (max-width: 470px) {
+    main {
+        flex-direction: column; /* Altera para coluna em telas menores */
+    }
+    header{
+        flex-direction: column;
+        justify-content: center;
+    }
+    header img{
+        width:70%;
+        height: auto;
+
+    }
+    section{
+        width: 100%;
+    }
+
+
+
+    
+}
+
+@media (max-width: 510px){
+    .sinais-porte{
+        flex-direction: column;
+    }
+
+    main{
+        padding: 3px;
+    }
+    .fieldset-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    
+}
+
+#resultado{
+    display: block; 
+    font-size: 24px; 
+    margin-top: 20px;
+}
+
+#alerta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudo-alerta {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.obs{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 1.2em;
+    width: 65%;
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.cadastro-paciente{
+    min-width: 40%;
+}
+.sinais-vitais{
+    min-width: 56%;
+
+}
+#shadow-host-companion{
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semitransparente */
+    z-index: 1000; /* Certifica que o modal está acima de tudo */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease; /* Animação de entrada */
+  }
+  
+  /* Animação */
+  @keyframes slideDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .modal-header .logo {
+    width: 50px;
+    height: auto;
+  }
+  
+  /* Body */
+  .modal-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .modal-body table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  /* Close button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .close:hover {
+    color: #000;
+  }
