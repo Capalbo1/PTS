@@ -25,6 +25,18 @@ header {
   text-transform: uppercase;
 }
 
+button{
+  background-color: #407fb3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
 header img {
   height: 60px;
   margin-right: 20px;

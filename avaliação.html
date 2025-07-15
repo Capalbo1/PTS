@@ -880,7 +880,25 @@
 </div>
 
 
+
 <script>
+
+ document.addEventListener('DOMContentLoaded', function() {
+  // Recuperar os dados do localStorage
+  const dadosSalvos = localStorage.getItem('dadosPaciente');
+  
+  if (dadosSalvos) {
+    const dadosPaciente = JSON.parse(dadosSalvos);
+    
+    // Preencher os campos na página de avaliação
+    document.getElementById('campoNome').textContent = dadosPaciente.nome;
+    document.getElementById('campoIdade').textContent = dadosPaciente.idade;
+    document.getElementById('campoSexo').textContent = dadosPaciente.sexo;
+    
+    // Ou se você tiver campos de formulário na avaliação:
+    // document.querySelector('[name="nome"]').value = dadosPaciente.nome;
+  }
+}); 
 function atualizarResumoVinculoSaude() {
   const container = document.getElementById('resumo-vinculo-saude');
   const resposta = document.querySelector('input[name="vinculo_saude"]:checked');

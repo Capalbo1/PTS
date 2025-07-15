@@ -109,3 +109,21 @@ else {
   else if (nivel.includes('Nível 3')) form.nivel_cuidado.value = 'alto';
   else form.nivel_cuidado.value = 'intensivo';
 });
+
+document.getElementById('triagemForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Capturar os dados do formulário
+  const formData = {
+    nome: this.nome.value,
+    idade: this.idade.value,
+    sexo: this.sexo.value
+    // Adicione outros campos se necessário
+  };
+  
+  // Salvar no localStorage
+  localStorage.setItem('dadosPaciente', JSON.stringify(formData));
+  
+  // Redirecionar para avaliação.html
+  window.location.href = 'avaliação.html';
+});
