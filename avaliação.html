@@ -1476,23 +1476,37 @@ function atualizarResumoAcamado() {
 
 function atualizarResumoDeambulacao() {
   const container = document.getElementById('resumo-deambulacao');
-  const deambula = document.querySelector('input[name="deambulacao"]:checked');
-  
-  if (!deambula || deambula.value === 'sim') {
+  const tipo = document.querySelector('input[name="tipo_deambulacao"]:checked');
+
+  // Se nada estiver selecionado, limpa
+  if (!tipo) {
     container.innerHTML = '';
     return;
   }
-  
-  const tipo = document.querySelector('input[name="tipo_deambulacao"]:checked');
-  let texto = '';
-  let meta = 'Realizar  reabilitações motoras e  ';
-  
-  if (tipo) {
-    texto += ` (${tipo.value === 'com_auxilio' ? 'Precisa de auxílio' : 'Não deambula'})`;
-  }
-  
-  container.innerHTML = criarItemResumo(texto, meta);
+
+  // Texto base
+  const texto = `Paciente com alteração na deambulação (${tipo.value === 'com_auxilio' ? 'Precisa de auxílio' : 'Não deambula'})`;
+
+  // Metas
+  const metas = [
+    'Realizar reabilitações motoras',
+    'Dispositivos de marcha'
+  ];
+
+  // HTML final
+  container.innerHTML = `
+    <div class="resumo-item">
+      <input type="checkbox" class="resumo-checkbox">
+      <div class="resumo-texto">
+        ${texto}
+        <div class="metas-container">
+          ${metas.map(meta => `<div class="meta-tag">${meta}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
 }
+
 
 function atualizarResumoInterconsulta() {
   const container = document.getElementById('resumo-interconsulta');
@@ -2242,7 +2256,22 @@ function toggleOutrosEspecialidade(checkbox) {
   }
 }
 </script>
+
+
+<script>
+  function salvarRespostaDeambulacao(resposta) {
+    try {
+      localStorage.setItem('resposta-deambulacao', resposta);
+      alert("Resposta salva: " + resposta);
+      console.log("LocalStorage salva:", localStorage.getItem('resposta-deambulacao'));
+    } catch (e) {
+      alert("Erro ao salvar no localStorage: " + e.message);
+    }
+  }
+</script>
+
 <script src="script/script2.js"></script>
 <script src="script/generatePDF.js"></script> 
 <script src="script/metaspdf.js"></script> 
+
 </html>
