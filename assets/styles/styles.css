@@ -40,6 +40,17 @@ hr {
   height: 3px;
   background-color: #407fb3;
 }
+button{
+    background-color: #407fb3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
 
 /* Conteúdo da seção */
 section {

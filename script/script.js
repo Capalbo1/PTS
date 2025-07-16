@@ -48,7 +48,7 @@ form.addEventListener('submit', function(event) {
   // Verificação dos níveis conforme a nova lógica
 let nivel = '';
 
-// Nível 4: tem todos os profissionais básicos + fisio + psico
+// Equipe 4: tem todos os profissionais básicos + fisio + psico
 if (
   profs.has('Médico') &&
   profs.has('Enfermagem') &&
@@ -57,9 +57,9 @@ if (
   temFisio &&
   temPsico
 ) {
-  nivel = 'Nível 4 (Médico, Enfermagem, Farmácia, Nutrição, Fisioterapia e Psicologia)';
+  nivel = 'Equipe 4 (Médico, Enfermagem, Farmácia, Nutrição, Fisioterapia e Psicologia)';
 }
-// Nível 3: tem profissionais básicos + fisio (psico opcional)
+// Equipe 3: tem profissionais básicos + fisio (psico opcional)
 else if (
   profs.has('Médico') &&
   profs.has('Enfermagem') &&
@@ -67,9 +67,9 @@ else if (
   profs.has('Nutrição') &&
   temFisio
 ) {
-  nivel = 'Nível 3 (Médico, Enfermagem, Farmácia, Nutrição e Fisioterapia)';
+  nivel = 'Equipe 3 (Médico, Enfermagem, Farmácia, Nutrição e Fisioterapia)';
 }
-// Nível 2: tem profissionais básicos + psico (sem fisio)
+// Equipe 2: tem profissionais básicos + psico (sem fisio)
 else if (
   profs.has('Médico') &&
   profs.has('Enfermagem') &&
@@ -77,35 +77,35 @@ else if (
   profs.has('Nutrição') &&
   temPsico
 ) {
-  nivel = 'Nível 2 (Médico, Enfermagem, Farmácia, Nutrição e Psicologia)';
+  nivel = 'Equipe 2 (Médico, Enfermagem, Farmácia, Nutrição e Psicologia)';
 }
-// Nível 1: apenas os profissionais básicos
+// Equipe 1: apenas os profissionais básicos
 else if (
   profs.has('Médico') &&
   profs.has('Enfermagem') &&
   profs.has('Farmácia') &&
   profs.has('Nutrição')
 ) {
-  nivel = 'Nível 1 (Médico, Enfermagem, Farmácia e Nutrição)';
+  nivel = 'Equipe 1 (Médico, Enfermagem, Farmácia e Nutrição)';
 }
 // Caso não se encaixe em nenhum nível (teoricamente não deveria acontecer)
 else {
-  nivel = 'Nível não determinado';
+  nivel = 'Equipe não determinado';
 }
 
 
   // Exibe resultado
   const mensagem = `
     <p><strong>Profissionais sugeridos:</strong> ${profList.join(', ')}</p>
-    <p><strong>Classificação do nível de cuidado:</strong> ${nivel}</p>
+    <p><strong> Equipe de atenção:</strong> ${nivel}</p>
   `;
 
   resultadoDiv.innerHTML = mensagem;
   resultadoDiv.style.display = 'block';
 
   // Atualiza o campo do select
-  if (nivel.includes('Nível 1')) form.nivel_cuidado.value = 'baixo';
-  else if (nivel.includes('Nível 2')) form.nivel_cuidado.value = 'moderado';
-  else if (nivel.includes('Nível 3')) form.nivel_cuidado.value = 'alto';
+  if (nivel.includes('Equipe 1')) form.nivel_cuidado.value = 'baixo';
+  else if (nivel.includes('Equipe 2')) form.nivel_cuidado.value = 'moderado';
+  else if (nivel.includes('Equipe 3')) form.nivel_cuidado.value = 'alto';
   else form.nivel_cuidado.value = 'intensivo';
 });

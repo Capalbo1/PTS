@@ -1457,27 +1457,22 @@ function atualizarResumoDependencia() {
 function atualizarResumoAcamado() {
   const container = document.getElementById('resumo-acamado');
   const acamado = document.querySelector('input[name="acamado"]:checked');
-  
+
   if (!acamado || acamado.value === 'nao') {
     container.innerHTML = '';
     return;
   }
-  
+
   const tempo = document.querySelector('input[name="tempo_acamado"]:checked');
-  let texto = 'Paciente está acamado';
-  let meta = 'Meta: Prevenir úlceras por pressão';
-  
-  if (tempo) {
-    let tempoTexto = '';
-    if (tempo.value === 'menos_1mes') tempoTexto = '1 a 3 meses';
-    else if (tempo.value === '1_3meses') tempoTexto = '3 meses a 1 ano';
-    else if (tempo.value === 'mais_3meses') tempoTexto = 'Mais de 1 ano';
-    
-    texto += ` (${tempoTexto})`;
-  }
-  
-  container.innerHTML = criarItemResumo(texto, meta);
+
+  const meta1 = 'Colchão pneumática';
+  const meta2 = 'Realizar mudança de decúbito de 2/2 h';
+
+  container.innerHTML = `${meta1}<br>${meta2}`;
 }
+
+
+
 
 function atualizarResumoDeambulacao() {
   const container = document.getElementById('resumo-deambulacao');
@@ -1489,8 +1484,8 @@ function atualizarResumoDeambulacao() {
   }
   
   const tipo = document.querySelector('input[name="tipo_deambulacao"]:checked');
-  let texto = 'Paciente não deambula sozinho';
-  let meta = 'Meta: Avaliar necessidade de auxílio para mobilidade';
+  let texto = '';
+  let meta = 'Realizar  reabilitações motoras e  ';
   
   if (tipo) {
     texto += ` (${tipo.value === 'com_auxilio' ? 'Precisa de auxílio' : 'Não deambula'})`;
