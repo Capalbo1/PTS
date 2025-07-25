@@ -67,6 +67,18 @@
       font-weight: 600;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+
+button{background: linear-gradient(to bottom, #007bd4, #0057a3);
+color: white;
+padding: 15px 50px;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+font-weight: bold;
+font-size: 18px;
+transition: all 0.3s ease;
+box-shadow: 0 4px 12px rgba(0, 87, 163, 0.25);
+}
     
     /* Título do formulário */
     .form-title {

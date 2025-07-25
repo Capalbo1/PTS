@@ -842,16 +842,10 @@
 </form>
 
 <div class="resumo-container">
-  <div class="metas-padrao-container">
+  <div class="metas-padrao-container resumo-container">
   <h2>Metas Padrões</h2>
   <div id="metas-padrao"></div>
-</div>
-
-<div class="resumo-container">
-  <!-- ... o restante do seu código existente ... -->
-
-  <h2>Resumo e Metas</h2>
-  <div id="resumo-dependencia"></div>
+   <div id="resumo-dependencia"></div>
   <div id="resumo-acamado"></div>
   <div id="resumo-deambulacao"></div>
   <div id="resumo-interconsulta"></div>
@@ -871,10 +865,12 @@
   <div id="resumo-residencia"></div>
   <div id="resumo-beneficio"></div>
   <div id="resumo-vinculo-saude"></div>
+  <div class="resumo-container"></div>
 </div>
 
+
 <!-- Adicione este botão no final do seu resumo-container -->
-<div class="resumo-container">
+
   <!-- ... conteúdo existente ... -->
   <button id="gerar-pdf-metas">Gerar PDF de Metas</button>
 </div>
@@ -1381,9 +1377,9 @@ function gerarMetasPadrao() {
   
   // Lista de metas padrões
   const metasPadrao = [
-    "1. Internação hospitalar",
-    "2. Antibioticoterapia",
-    "3. Suporte clínico e cuidados de enfermaria"
+    "Internação hospitalar",
+    "Antibioticoterapia",
+    "Suporte clínico e cuidados de enfermaria"
   ];
   
   // Limpa o container antes de adicionar as metas
